@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/assets/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryUI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/content/accueil_admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/content/page404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/index_.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Admin.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/AdminDAO.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Autoloader.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Client.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Connection.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Representation.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Reservation.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Salle.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/SalleDAO.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/db/db_pg_connect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/all_includes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/check_connection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/page404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/pdo_db.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mission.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" notifyAboutMissingVendor="false" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2stfxdFFw2cfBwwHkuc0pTAwg7D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-PHP": "PHP",
+    "Notification.DoNotAsk-PHP": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/xampp/htdocs/projet/admin/src/php/classes",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projet\admin\src\php\classes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\mission\content" />
+      <recent name="C:\xampp\htdocs\mission\admin\assets\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="projetTI2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="projetTI2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="" />
+      <created>1739280038246</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739280038246</updated>
+      <workItem from="1739280039309" duration="3704000" />
+      <workItem from="1739439752062" duration="5128000" />
+      <workItem from="1739875785685" duration="6817000" />
+      <workItem from="1740039436908" duration="1515000" />
+      <workItem from="1740487087197" duration="4799000" />
+      <workItem from="1741533159476" duration="1210000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
