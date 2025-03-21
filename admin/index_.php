@@ -3,7 +3,9 @@ session_start();
 //INDEX ADMIN
 include('./src/php/utils/header.php');
 include('./src/php/utils/all_includes.php');
+
 ?>
+
 
 <!doctype html>
 <html>
