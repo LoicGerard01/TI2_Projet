@@ -1,5 +1,6 @@
 
 <?php
+// Representation.class.php
 
 class Representation
 {

@@ -2,7 +2,9 @@
     height: 10em;
     width: 10em;
     background-color: aqua;
-    border: 2px solid black;
-    border-radius: 500px;
-    text-align: center;
+}
+
+.txtGras{
+    font-weight: bold;
+    font-size: 130%;
 }
