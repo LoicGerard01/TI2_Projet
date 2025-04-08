@@ -62,4 +62,17 @@ class RepresentationDAO
             print $e->getMessage();
         }
     }
+
+    public function getRepresentationByTitre($titre)
+    {
+        $query = "SELECT * FROM representation WHERE titre = :titre";
+        try {
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':titre', $titre);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Echec de la requête " . $e->getMessage();
+        }
+    }
 }

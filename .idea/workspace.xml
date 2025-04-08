@@ -4,31 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction login administrateur">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/backups/dumps/DBBackup21_03_25.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/content/gestion_representation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" afterDir="false" />
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="maj db + affichage representations">
+      <change afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_get_salle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_search_representation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryUI.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/accueil_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/accueil_admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/disconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/disconnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index_.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Admin.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Admin.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/AdminDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/AdminDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Representation.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Representation.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/db/db_pg_connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/db/db_pg_connect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/all_includes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/all_includes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/check_connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/check_connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/SalleDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/SalleDAO.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +115,7 @@
       <workItem from="1741696248024" duration="882000" />
       <workItem from="1742547793550" duration="3646000" />
       <workItem from="1743064812937" duration="52000" />
-      <workItem from="1744100855284" duration="3842000" />
+      <workItem from="1744100855284" duration="7129000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -164,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742553836431</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="maj db + affichage representations">
+      <option name="closed" value="true" />
+      <created>1744104898149</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744104898149</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +166,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)" />
     <MESSAGE value="correction login administrateur" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction login administrateur" />
+    <MESSAGE value="maj db + affichage representations" />
+    <option name="LAST_COMMIT_MESSAGE" value="maj db + affichage representations" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
