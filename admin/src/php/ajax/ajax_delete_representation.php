@@ -6,9 +6,12 @@ require '../classes/Representation.class.php';
 require '../classes/RepresentationDAO.class.php';
 
 $cnx = Connection::getInstance($dsn, $user, $password);
-$representation = new RepresentationDAO($cnx);
+$representationDAO = new RepresentationDAO($cnx);
 
-$titre = $_GET['nom_representation'] ?? '';
-
-$data = $representation->ajax_get_representation($titre);
-echo json_encode($data);
+$id = $_GET['id_representation'] ?? null;
+if ($id) {
+    $representationDAO->delete_representation($id);
+    echo json_encode(['success' => true]);
+} else {
+    echo json_encode(['success' => false, 'message' => 'ID manquant']);
+}

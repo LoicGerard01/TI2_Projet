@@ -1,3 +1,5 @@
+<!-- Vue_representations.class.php -->
+
 <?php
 
 class Vue_representations{

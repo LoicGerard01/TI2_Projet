@@ -1,77 +1,50 @@
 <?php
-// nouvelle_mission.php
+// nouvelle_representation.php
+$title = "Nouvelle représentation";
 
-//récupération des données
-$title = "Nouvelle mission";
-$salle = new SalleDAO($cnx);
-$liste_s = $salle->getSalles();
-$nbr_p = 0;
-$salle_choisie = "";
+$salleDAO = new SalleDAO($cnx);
+$liste_s = $salleDAO->getSalles();
 
-if ($liste_s != NULL) {
-    $nbr_p = count($liste_s);
-}
-//vérifier envoi du form première liste
-if (isset($_GET['submit_salle']) && !empty($_GET['id_salle'])) {
-    $salle = new SalleDAO($cnx);
-    $liste_s = $salle->getSalleById($_GET['id_salle']);
-}
-
-if (isset($_POST['submit_salle'])){
-    extract($_POST, EXTR_OVERWRITE);
-    $representation = new RepresentationDAO($cnx);
-    $retour = $representation->add_representation($titre,$type,$date_representation,$image,$salle);
-
-    if($retour != -1){
-        print "<br>Représentation ajoutée avec succès !</br>";
-    } else {
-        print "<br>Erreur lors de l'ajout de la représentation !</br>";
-    }
-}
 ?>
 
-    <form id="form_ajout_representation" method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
-        <div class="container form_nouvelle_representation" id="nouvelle_representation">
-            <h2>Nouvelle représentation</h2>
-            <label for="titre">Titre :</label>
-            <input type="text" name="titre" id="titre" required>
-            <br>
-            <label for="type">Type :</label>
-            <input type="text" name="type" id="type" required>
-            <br>
+<form id="form_representation">
+    <input type="hidden" id="id_representation" name="id_representation" />
 
-            <label for="date_representation">Date de représentation :</label>
-            <input type="date" name="date_representation" id="date_representation" required>
-            <br>
+    <div class="container form_nouvelle_representation">
+        <h2>Nouvelle représentation</h2>
 
-            <label hidden="hidden" for="image">Image :</label>
-            <input type="file" hidden="hidden" name="image" id="image">
-            <br>
+        <label for="nom_representation">Titre :</label>
+        <input type="text" class="form-control" id="nom_representation" name="titre" required />
+        <br>
 
-            <label for="salle">Salle :</label>
-            <select name="salle" id="salle">
-                <br>
+        <label for="type_representation">Type :</label>
+        <input type="text" class="form-control" id="type_representation" name="type" />
+        <br>
 
-                <?php
-                foreach ($liste_s as $s) {
-                    ?>
-                    <option value="<?= htmlspecialchars($s->id_salle); ?>">
-                        <?= htmlspecialchars($s->num_salle); ?>
-                    </option>
-                    <?php
-                }
-                ?>
-            </select>
-            <br>
+        <label for="date_representation">Date :</label>
+        <input type="date" class="form-control" id="date_representation" name="date" />
+        <br>
 
-            <input type="submit" value="Ajouter la représentation" name="submit_mission">
-        </div>
-    </form>
+        <label for="image_representation">Image :</label>
+        <input type="text" class="form-control" id="image_representation" name="image" />
+        <br>
 
-<?php
-if (isset($localisation)) {
-    echo $localisation;
-}
-?>
-<!--  JavaScript uniquement : -->
-<div id="localisation_js"></div>
+        <label for="salle_representation">Salle :</label>
+        <select id="salle_representation" name="salle">
+            <?php foreach ($liste_s as $s): ?>
+                <option value="<?= htmlspecialchars($s->id_salle); ?>">
+                    <?= htmlspecialchars($s->num_salle); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <br><br>
+
+        <input type="submit" id="submit_representation" class="btn btn-primary" value="Ajouter ou mettre à jour" />
+    </div>
+</form>
+
+<div id="zone_id_representation" style="display:none">
+    <p>ID existant : <span id="zone_id_value"></span></p>
+</div>
+
+<div id="zone_rapport" style="display:none"></div>

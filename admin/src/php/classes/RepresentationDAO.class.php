@@ -1,9 +1,9 @@
+<!-- RepresentationDAO.class.php -->
+
 <?php
-// RepresentationDAO.class.php
 
 class RepresentationDAO
 {
-
     private $_bd;
     private $_array = array();
 
@@ -12,67 +12,133 @@ class RepresentationDAO
         $this->_bd = $cnx;
     }
 
-    public function ajax_get_representation($nom)
+    public function update_ajax_representation($champ, $valeur, $id)
     {
-        $query = "SELECT * FROM representation where nom_representation = :nom";
+        $query = "SELECT update_ajax_representation(:champ, :valeur, :id_representation)";
+
         try {
-            $resultset = $this->_bd->prepare($query);
-            $resultset->bindValue(":nom", $nom);
-            $resultset->execute();
-            $_array = $resultset->fetchAll();
-            if (!empty($_array)) {
-                return $_array;
-            } else {
-                return null;
-            }
+            // Démarrer une transaction
+            $this->_bd->beginTransaction();
+
+            // Préparer la requête SQL avec des paramètres nommés
+            $stmt = $this->_bd->prepare($query);
+
+            // Lier les valeurs des paramètres
+            $stmt->bindValue(':id_representation', $id);
+            $stmt->bindValue(':champ', $champ);
+            $stmt->bindValue(':valeur', $valeur);
+
+            // Exécuter la requête
+            $stmt->execute();
+
+            // Commit la transaction si tout s'est bien passé
+            $this->_bd->commit();
+
+            return true; // Retourne true si la mise à jour est réussie
         } catch (PDOException $e) {
-            print "Echec de la requête " . $e->getMessage();
+            // Rollback en cas d'erreur
+            $this->_bd->rollBack();
+
+            // Log de l'erreur
+            print $e->getMessage();
+
+            return false; // Retourne false en cas d'erreur
         }
     }
 
-    public function add_representation($id_representation,$titre,$type,$date_representation,$image,$salle){
-        $query = "SELECT ajout_representation(:id_representation, :titre, :type, :date_representation, :image, :salle) as retour";
+
+    public function delete_representation($id)
+    {
+        $query = "SELECT delete_representation(:id_representation)";
         try {
-            // Check if a transaction is already active
-            if (!$this->_bd->inTransaction()) {
-                $this->_bd->beginTransaction();
-            }
-
+            $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
-            $stmt->bindValue(':id_representation', $id_representation);
-            $stmt->bindValue(':titre', $titre);
-            $stmt->bindValue(':type', $type);
-            $stmt->bindValue(':date_representation', $date_representation);
-            $stmt->bindValue(':image', $image);
-            $stmt->bindValue(':salle', $salle);
+            $stmt->bindValue(':id_representation', $id);
             $stmt->execute();
-            $retour = $stmt->fetchColumn(0);
-
-            // Only commit if we started the transaction
-            if ($this->_bd->inTransaction()) {
-                $this->_bd->commit();
-            }
-
-            return $retour;
+            $this->_bd->commit();
         } catch (PDOException $e) {
-            // Only rollback if we're in a transaction
-            if ($this->_bd->inTransaction()) {
-                $this->_bd->rollBack();
-            }
+            $this->_bd->rollBack();
             print $e->getMessage();
         }
     }
 
-    public function getRepresentationByTitre($titre)
+    public function add_representation($titre, $type, $date, $image, $salle)
+    {
+        $query = "SELECT ajout_representation(:titre, :type, :date, :image, :salle) as retour";
+        try {
+            $this->_bd->beginTransaction();
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':titre', $titre);
+            $stmt->bindValue(':type', $type);
+            $stmt->bindValue(':date', $date);
+            $stmt->bindValue(':image', $image);
+            $stmt->bindValue(':salle', $salle);
+            $stmt->execute();
+            $retour = $stmt->fetchColumn(0);
+            $this->_bd->commit();
+            return $retour;
+        } catch (PDOException $e) {
+            $this->_bd->rollBack();
+            print $e->getMessage();
+            return -1;
+        }
+    }
+
+    public function update_representation($id, $titre, $type, $date, $image, $salle)
+    {
+        $query = "SELECT update_representation(:id, :titre, :type, :date, :image, :salle) as retour";
+        try {
+            $this->_bd->beginTransaction();
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':id', $id);
+            $stmt->bindValue(':titre', $titre);
+            $stmt->bindValue(':type', $type);
+            $stmt->bindValue(':date', $date);
+            $stmt->bindValue(':image', $image);
+            $stmt->bindValue(':salle', $salle);
+            $stmt->execute();
+            $retour = $stmt->fetchColumn(0);
+            $this->_bd->commit();
+            return $retour;
+        } catch (PDOException $e) {
+            $this->_bd->rollBack();
+            print "Echec : " . $e->getMessage();
+            return -1;
+        }
+    }
+
+    public function ajax_get_representation($titre)
     {
         $query = "SELECT * FROM representation WHERE titre = :titre";
         try {
+            $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
             $stmt->bindValue(':titre', $titre);
             $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+            $this->_bd->commit();
+            return $stmt->rowCount() > 0 ? $result : null;
         } catch (PDOException $e) {
-            print "Echec de la requête " . $e->getMessage();
+            $this->_bd->rollBack();
+            print $e->getMessage();
+            return -1;
+        }
+    }
+
+    public function getAllRepresentations()
+    {
+        $query = "SELECT * FROM representation ORDER BY date_representation";
+        try {
+            $this->_bd->beginTransaction();
+            $stmt = $this->_bd->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $this->_bd->commit();
+            return $result;
+        } catch (PDOException $e) {
+            $this->_bd->rollBack();
+            print $e->getMessage();
+            return null;
         }
     }
 }
