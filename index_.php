@@ -20,26 +20,32 @@ include('./admin/src/php/utils/all_includes.php');
 <body>
 <div id="page" class="container">
     <header class="img_header"></header>
-    <section id=" ">
+
+    <section id="navigation">
         <nav>
-            <?php if(file_exists('admin/src/php/utils/public_menu.php')){
+            <?php
+            if (isset($_SESSION['client']) && file_exists('admin/src/php/utils/client_menu.php')) {
+                include('admin/src/php/utils/client_menu.php');
+            } elseif (file_exists('admin/src/php/utils/public_menu.php')) {
                 include('admin/src/php/utils/public_menu.php');
             }
             ?>
         </nav>
     </section>
+
     <section id="contenu">
         <div class="container">
             <?php
-            if(file_exists('./content/'.$_SESSION['page'])){
-                $path = './content/'.$_SESSION['page'];
-                include($path);
+            if (isset($_SESSION['page']) && file_exists('./content/' . $_SESSION['page'])) {
+                include('./content/' . $_SESSION['page']);
+            } else {
+                echo "<p>Bienvenue !</p>";
             }
             ?>
         </div>
     </section>
-
 </div>
+
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
         <span class="text-muted">2025</span>
@@ -47,4 +53,3 @@ include('./admin/src/php/utils/all_includes.php');
 </footer>
 </body>
 </html>
-

@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout pages client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/content/disconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/disconnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +90,7 @@
       <recent name="C:\xampp\htdocs\projet\admin\content" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projet\admin\src\php\utils" />
       <recent name="C:\xampp\htdocs\projet\content" />
       <recent name="C:\xampp\htdocs\projet\content\client" />
       <recent name="C:\xampp\htdocs\mission\content" />
@@ -116,7 +124,7 @@
       <workItem from="1743064812937" duration="52000" />
       <workItem from="1744100855284" duration="8777000" />
       <workItem from="1744717007200" duration="9630000" />
-      <workItem from="1745313836425" duration="12261000" />
+      <workItem from="1745313836425" duration="16596000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -206,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745328434967</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ajout pages client">
+      <option name="closed" value="true" />
+      <created>1745328732108</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745328732108</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

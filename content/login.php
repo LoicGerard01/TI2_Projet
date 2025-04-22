@@ -11,11 +11,11 @@ if(isset($_POST['login_submit'])){
         exit();
     } else {
         $clientDao = new ClientDAO($cnx);
-        $nom_client = $clientDao->getClient($login, $password);
+        $email = $clientDao->getClient($login, $password);
 
-        if($nom_client) {
-            $_SESSION['client'] = $nom_client;
-            header('location: index_.php?page=content/accueil_client.php');
+        if($email) {
+            $_SESSION['client'] = $email;
+            header('location: index_.php?page=accueil.php');
             exit();
         } else {
             $erreur = "Login ou mot de passe incorrect";
