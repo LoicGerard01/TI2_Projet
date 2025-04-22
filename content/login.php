@@ -15,7 +15,7 @@ if(isset($_POST['login_submit'])){
 
         if($nom_client) {
             $_SESSION['client'] = $nom_client;
-            header('location: index_.php?page=accueil_client.php');
+            header('location: index_.php?page=content/accueil_client.php');
             exit();
         } else {
             $erreur = "Login ou mot de passe incorrect";
