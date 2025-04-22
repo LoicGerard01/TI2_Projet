@@ -107,10 +107,6 @@ $(document).ready(function(){
     });
 
 
-
-
-
-
     // Suppression
     $('.edit_no_js').hide();
     $('.delete').css('cursor','pointer');

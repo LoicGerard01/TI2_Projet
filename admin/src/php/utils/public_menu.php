@@ -10,10 +10,7 @@
                     <a class="nav-link active" aria-current="page" href="index_.php?page=accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index_.php?page=pays.php">Pays</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index_.php?page=jquery_ui1.php">Jquery ui 1</a>
+                    <a class="nav-link" href="index_.php?page=programmes.php">Consulter les programmes</a>
                 </li>
             </ul>
             <div class="ms-auto p-2">

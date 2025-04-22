@@ -7,17 +7,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index_.php?page=accueil_admin.php">Accueil</a>
+                    <a class="nav-link active" aria-current="page" href="index_.php?page=accueil.php">Accueil Client</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Gestion Admin
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index_.php?page=nouvelle_representation.php">Nouvelle représentation</a></li>
-                        <li><a class="dropdown-item" href="index_.php?page=gestion_representation.php">Gestion des représentations</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="index_.php?page=programmes.php">Consulter les programmes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index_.php?page=mes_reservations.php">Mes réservations</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">

@@ -47,8 +47,12 @@ $liste_s = $salleDAO->getSalles();
 
 
             <td contenteditable="true" data-champ="image" id="<?= $representation->getId_representation(); ?>">
+                <!-- Affichage de l'image -->
+                <img src="../admin/assets/images/<?= $representation->getImage(); ?>" style="max-width: 140px; max-height: 140px; margin-right: 10px;">
+                <!-- Affichage du nom du fichier image -->
                 <?= $representation->getImage(); ?>
             </td>
+
 
             <td data-champ="salle" id="<?= $representation->getId_representation(); ?>">
                 <select class="form-select salle-select" data-id="<?= $representation->getId_representation(); ?>">

@@ -15,5 +15,14 @@ if (file_exists('./src/php/db/db_pg_connect.php')) {
         Autoloader::register();
         $cnx = Connection::getInstance($dsn, $user, $password);
     }
+    else {
+        //si on se trouve dans la partie cliente
+        if (file_exists('../../admin/src/php/db/db_pg_connect.php')) {
+            require '../../admin/src/php/db/db_pg_connect.php';
+            require '../../admin/src/php/classes/Autoloader.class.php';
+            Autoloader::register();
+            $cnx = Connection::getInstance($dsn, $user, $password);
+        }
+    }
 }
 

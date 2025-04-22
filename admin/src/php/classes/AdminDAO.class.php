@@ -21,10 +21,9 @@ class AdminDAO
             $resultset->execute();
             //$data = $resultset->fetchAll();
             $nom = $resultset->fetchColumn(0);
-            return $nom;
-
 
             $this->_bd->commit();
+            return $nom;
         } catch (PDOException $e) {
             $this->_bd->rollback();
             print "Echec de la requête " . $e->getMessage();
