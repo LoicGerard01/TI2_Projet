@@ -53,16 +53,60 @@ $(document).ready(function(){
                     champ: champ,
                     valeur: valeur,
                     id_representation: id_representation
-                },
-                success: function (data) {
-                    console.log("Modification réussie :", data);
-                },
-                error: function (xhr) {
-                    console.error("Erreur AJAX :", xhr.responseText);
                 }
             });
         });
     });
+
+    // pour récuperer la salle lors de la modification
+    $(document).on('change', '.salle-select', function () {
+        const id = $(this).data('id');
+        const valeur = $(this).val();
+        const champ = 'salle';
+
+        console.log("Champ:", champ, "Valeur:", valeur, "ID:", id); // Pour debugger
+
+        $.ajax({
+            url: 'src/php/ajax/ajax_update_representation.php',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                champ: champ,
+                valeur: valeur,
+                id_representation: id
+            }
+        });
+    });
+
+    // pour récuperer la date lors de la modification
+
+    $('td[contenteditable="true"]').on('blur', function () {
+        let champ = $(this).data('champ');
+        let id_representation = $(this).attr('id');
+        let valeur;
+
+        // Si l'élément est un input de type date, on récupère la valeur de l'input
+        if ($(this).find('input[type="date"]').length) {
+            valeur = $(this).find('input[type="date"]').val().trim();
+        } else {
+            valeur = $(this).text().trim();
+        }
+
+        console.log("Champ:", champ, "Valeur:", valeur, "ID:", id_representation);
+
+        $.ajax({
+            url: 'src/php/ajax/ajax_update_representation.php',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                champ: champ,
+                valeur: valeur,
+                id_representation: id_representation
+            }
+        });
+    });
+
+
 
 
 

@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout representation ( ajax + js fonctionnel mais pas l'ajout dans la db)">
-      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_representation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_delete_representation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_update_representation.php" afterDir="false" />
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout tableau d'affichage des représentations ( ajout et suppression fonctionnel , pas la modif)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/backups/plpgsql/ajout_pays.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/content/gestion_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/gestion_representation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index_.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_search_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_search_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_update_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_update_representation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +112,8 @@
       <workItem from="1742547793550" duration="3646000" />
       <workItem from="1743064812937" duration="52000" />
       <workItem from="1744100855284" duration="8777000" />
-      <workItem from="1744717007200" duration="9329000" />
+      <workItem from="1744717007200" duration="9630000" />
+      <workItem from="1745313836425" duration="2249000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -179,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744108743619</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ajout tableau d'affichage des représentations ( ajout et suppression fonctionnel , pas la modif)">
+      <option name="closed" value="true" />
+      <created>1745081792992</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745081792992</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +190,8 @@
     <MESSAGE value="correction login administrateur" />
     <MESSAGE value="maj db + affichage representations" />
     <MESSAGE value="ajout representation ( ajax + js fonctionnel mais pas l'ajout dans la db)" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout representation ( ajax + js fonctionnel mais pas l'ajout dans la db)" />
+    <MESSAGE value="ajout tableau d'affichage des représentations ( ajout et suppression fonctionnel , pas la modif)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout tableau d'affichage des représentations ( ajout et suppression fonctionnel , pas la modif)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
