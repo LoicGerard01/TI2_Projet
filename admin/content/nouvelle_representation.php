@@ -42,6 +42,12 @@ $liste_s = $salleDAO->getSalles();
                 <label for="description_representation" class="form-label">Description :</label>
                 <textarea class="form-control" id="description_representation" name="description" rows="4"></textarea>
             </div>
+
+            <div class="mb-3">
+                <label for="prix_representation" class="form-label">Prix :</label>
+                <input type="text" class="form-control" id="prix_representation" name="prix" pattern="[0-9]+(\.[0-9]{1,2})?" title="Format: 00.00" required />
+            </div>
+
             <!-- Salle -->
             <div class="mb-3">
                 <label for="salle_representation" class="form-label">Salle :</label>
