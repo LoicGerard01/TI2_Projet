@@ -12,16 +12,19 @@ $type = $_POST['type'] ?? '';
 $date = $_POST['date'] ?? '';
 $image = $_POST['image'] ?? '';
 $salle = $_POST['salle'] ?? '';
+$description = $_POST['description'] ?? '';
+$prix = $_POST['prix'] ?? '';
 $id = $_POST['id_representation'] ?? null;
 
 try {
     if ($id != "") {
-        $retour = $dao->update_representation($id, $titre, $type, $date, $image, $salle);
+        $retour = $dao->update_representation($id, $titre, $type, $date, $image, $salle, $description , $prix);  // <-- AJOUT description ici
         echo json_encode(["success" => true, "operation" => "update", "id" => $id]);
     } else {
-        $retour = $dao->add_representation($titre, $type, $date, $image, $salle);
+        $retour = $dao->add_representation($titre, $type, $date, $image, $salle, $description, $prix);  // <-- AJOUT description ici
         echo json_encode(["success" => true, "operation" => "insert", "id" => $retour]);
     }
 } catch (Exception $e) {
     echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
+?>

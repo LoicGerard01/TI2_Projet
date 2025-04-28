@@ -62,9 +62,9 @@ class RepresentationDAO
         }
     }
 
-    public function add_representation($titre, $type, $date, $image, $salle)
+    public function add_representation($titre, $type, $date, $image, $salle, $description , $prix)
     {
-        $query = "SELECT ajout_representation(:titre, :type, :date, :image, :salle) as retour";
+        $query = "SELECT ajout_representation(:titre, :type, :date, :image, :salle, :description , :prix) as retour";
         try {
             $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
@@ -73,6 +73,8 @@ class RepresentationDAO
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':image', $image);
             $stmt->bindValue(':salle', $salle);
+            $stmt->bindValue(':description', $description);  // Nouvelle valeur
+            $stmt->bindValue(':prix', $prix);  // Nouvelle valeur
             $stmt->execute();
             $retour = $stmt->fetchColumn(0);
             $this->_bd->commit();
@@ -84,9 +86,10 @@ class RepresentationDAO
         }
     }
 
-    public function update_representation($id, $titre, $type, $date, $image, $salle)
+
+    public function update_representation($id, $titre, $type, $date, $image, $salle, $description , $prix)
     {
-        $query = "SELECT update_representation(:id, :titre, :type, :date, :image, :salle) as retour";
+        $query = "SELECT update_representation(:id, :titre, :type, :date, :image, :salle, :description , :prix) as retour";
         try {
             $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
@@ -96,6 +99,8 @@ class RepresentationDAO
             $stmt->bindValue(':date', $date);
             $stmt->bindValue(':image', $image);
             $stmt->bindValue(':salle', $salle);
+            $stmt->bindValue(':description', $description);
+            $stmt->bindValue(':prix', $prix);
             $stmt->execute();
             $retour = $stmt->fetchColumn(0);
             $this->_bd->commit();
@@ -106,6 +111,7 @@ class RepresentationDAO
             return -1;
         }
     }
+
 
     public function ajax_get_representation($titre)
     {

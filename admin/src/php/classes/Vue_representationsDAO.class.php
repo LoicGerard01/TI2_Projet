@@ -34,6 +34,12 @@ class Vue_representationsDAO{
     public function getImage(){
         return $this->image;
     }
+    public function getDescription(){
+        return $this->description;
+    }
+    public function getPrix(){
+        return $this->prix;
+    }
     public function getSalle(){
         return $this->salle;
     }

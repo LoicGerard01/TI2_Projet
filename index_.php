@@ -22,11 +22,19 @@ include('./admin/src/php/utils/all_includes.php');
     <header class="img_header"></header>
     <section id=" ">
         <nav>
-            <?php if(file_exists('admin/src/php/utils/public_menu.php')){
-                include('admin/src/php/utils/public_menu.php');
+            <?php
+            if (isset($_SESSION['client'])) {
+                if (file_exists('admin/src/php/utils/client_menu.php')) {
+                    include('admin/src/php/utils/client_menu.php');
+                }
+            } else {
+                if (file_exists('admin/src/php/utils/public_menu.php')) {
+                    include('admin/src/php/utils/public_menu.php');
+                }
             }
             ?>
         </nav>
+
     </section>
     <section id="contenu">
         <div class="container">

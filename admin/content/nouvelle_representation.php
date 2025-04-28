@@ -4,42 +4,61 @@ $title = "Nouvelle représentation";
 
 $salleDAO = new SalleDAO($cnx);
 $liste_s = $salleDAO->getSalles();
-
 ?>
 
 <form id="form_representation">
     <input type="hidden" id="id_representation" name="id_representation" />
 
-    <div class="container form_nouvelle_representation">
-        <h2>Nouvelle représentation</h2>
+    <div class="container my-4">
+        <div class="card p-4 shadow-sm">
+            <h2 class="card-title text-center mb-4">Nouvelle Représentation</h2>
 
-        <label for="nom_representation">Titre :</label>
-        <input type="text" class="form-control" id="nom_representation" name="titre" required />
-        <br>
+            <!-- Titre -->
+            <div class="mb-3">
+                <label for="nom_representation" class="form-label">Titre :</label>
+                <input type="text" class="form-control" id="nom_representation" name="titre" required />
+            </div>
 
-        <label for="type_representation">Type :</label>
-        <input type="text" class="form-control" id="type_representation" name="type" />
-        <br>
+            <!-- Type -->
+            <div class="mb-3">
+                <label for="type_representation" class="form-label">Type :</label>
+                <input type="text" class="form-control" id="type_representation" name="type" />
+            </div>
 
-        <label for="date_representation">Date :</label>
-        <input type="date" class="form-control" id="date_representation" name="date" />
-        <br>
+            <!-- Date -->
+            <div class="mb-3">
+                <label for="date_representation" class="form-label">Date :</label>
+                <input type="date" class="form-control" id="date_representation" name="date" />
+            </div>
 
-        <label for="image_representation">Image :</label>
-        <input type="text" class="form-control" id="image_representation" name="image" />
-        <br>
+            <!-- Image -->
+            <div class="mb-3">
+                <label for="image_representation" class="form-label">Image :</label>
+                <input type="text" class="form-control" id="image_representation" name="image" />
+            </div>
 
-        <label for="salle_representation">Salle :</label>
-        <select id="salle_representation" name="salle">
-            <?php foreach ($liste_s as $s): ?>
-                <option value="<?= htmlspecialchars($s->id_salle); ?>">
-                    <?= htmlspecialchars($s->num_salle); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <br><br>
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description_representation" class="form-label">Description :</label>
+                <textarea class="form-control" id="description_representation" name="description" rows="4"></textarea>
+            </div>
+            <!-- Salle -->
+            <div class="mb-3">
+                <label for="salle_representation" class="form-label">Salle :</label>
+                <select id="salle_representation" name="salle" class="form-select">
+                    <?php foreach ($liste_s as $s): ?>
+                        <option value="<?= htmlspecialchars($s->id_salle); ?>">
+                            <?= htmlspecialchars($s->num_salle); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-        <input type="submit" id="submit_representation" class="btn btn-primary" value="Ajouter ou mettre à jour" />
+            <!-- Bouton Submit -->
+            <div class="d-flex justify-content-center">
+                <input type="submit" id="submit_representation" class="btn btn-primary" value="Ajouter ou mettre à jour" />
+            </div>
+        </div>
     </div>
 </form>
 

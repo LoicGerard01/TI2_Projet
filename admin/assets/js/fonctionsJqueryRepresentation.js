@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     // SOUMISSION DU FORMULAIRE (AJOUT / MÀJ)
     $('#form_representation').on('submit', function (e) {
@@ -9,14 +9,21 @@ $(document).ready(function(){
         let type = $('#type_representation').val();
         let date = $('#date_representation').val();
         let image = $('#image_representation').val();
+        let description = $('#description_representation').val();
+        let prix = $('#prix_representation').val();
         let salle = $('#salle_representation').val();
+
+        // Convertir la date en timestamp avec heure et fuseau horaire
+        let timestamp = new Date(date).toISOString(); // Utilisation de toISOString pour avoir la date avec le fuseau horaire
 
         let param = {
             id_representation: id,
             titre: titre,
             type: type,
-            date: date,
+            date: timestamp,
             image: image,
+            description: description,
+            prix: prix,
             salle: salle
         };
 
@@ -36,94 +43,91 @@ $(document).ready(function(){
         });
     });
 
-    // Édition en ligne
-    $(document).ready(function () {
-        $('td[contenteditable="true"]').on('blur', function () {
-            let champ = $(this).data('champ');
-            let valeur = $(this).text().trim();
-            let id_representation = $(this).attr('id');
-
-            console.log("Champ:", champ, "Valeur:", valeur, "ID:", id_representation);
-
+// Fonction générique pour faire un appel AJAX
+    function updateRepresentation(champ, valeur, id_representation) {
+        if (champ && valeur && id_representation) {
             $.ajax({
                 url: 'src/php/ajax/ajax_update_representation.php',
                 method: 'GET',
-                dataType: 'json',
                 data: {
                     champ: champ,
                     valeur: valeur,
                     id_representation: id_representation
+                },
+                success: function (response) {
+                    console.log("Réponse brute serveur:", response);
+
+                    // Essayons de parser nous-même
+                    try {
+                        let data = (typeof response === "object") ? response : JSON.parse(response);
+                        console.log("Mise à jour réussie:", data);
+                    } catch (e) {
+                        console.error("Erreur de parsing JSON:", e, response);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Erreur AJAX:", error, xhr.responseText);
                 }
             });
-        });
+        }
+    }
+
+    // Modification INLINE des champs contenteditable
+    $('td[contenteditable="true"]').on('blur', function () {
+        let champ = $(this).data('champ');
+        let valeur = $(this).text().trim();
+        let id_representation = $(this).attr('id');
+
+        console.log("Update field:", champ, "New value:", valeur, "For ID:", id_representation);
+
+        updateRepresentation(champ, valeur, id_representation);
     });
 
-    // pour récuperer la salle lors de la modification
+
+
+    // Modification de la DATE
+    $('.date-input').on('change', function () {
+        let valeur = $(this).val();
+        let id_representation = $(this).data('id');
+        let champ = 'date_representation'; // Champ fixe pour date
+
+        console.log("Update DATE:", champ, "New value:", valeur, "For ID:", id_representation);
+
+        // Conversion propre au format YYYY-MM-DD
+        if (valeur && valeur.includes('T')) {
+            valeur = valeur.split('T')[0];
+        }
+
+        updateRepresentation(champ, valeur, id_representation);
+    });
+
+    // Modification de la salle
     $(document).on('change', '.salle-select', function () {
         const id = $(this).data('id');
         const valeur = $(this).val();
         const champ = 'salle';
 
-        console.log("Champ:", champ, "Valeur:", valeur, "ID:", id); // Pour debugger
+        console.log("Update salle:", champ, "New value:", valeur, "For ID:", id);
 
-        $.ajax({
-            url: 'src/php/ajax/ajax_update_representation.php',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                champ: champ,
-                valeur: valeur,
-                id_representation: id
-            }
-        });
+        updateRepresentation(champ, valeur, id);
     });
 
-    // pour récuperer la date lors de la modification
-
-    $('td[contenteditable="true"]').on('blur', function () {
-        let champ = $(this).data('champ');
-        let id_representation = $(this).attr('id');
-        let valeur;
-
-        // Si l'élément est un input de type date, on récupère la valeur de l'input
-        if ($(this).find('input[type="date"]').length) {
-            valeur = $(this).find('input[type="date"]').val().trim();
-        } else {
-            valeur = $(this).text().trim();
-        }
-
-        console.log("Champ:", champ, "Valeur:", valeur, "ID:", id_representation);
-
-        $.ajax({
-            url: 'src/php/ajax/ajax_update_representation.php',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                champ: champ,
-                valeur: valeur,
-                id_representation: id_representation
-            }
-        });
-    });
-
-
-    // Suppression
-    $('.edit_no_js').hide();
-    $('.delete').css('cursor','pointer');
-
-    $('.delete').click(function(){
+    // Suppression d'une ligne
+    $('.delete').click(function () {
         let id_representation = $(this).data("id");
         let ligne = $(this).closest('tr');
-        ligne.css('background-color','lightpink');
+        ligne.css('background-color', 'lightpink');
         ligne.fadeOut(1000);
 
         $.ajax({
             type: 'get',
-            dataType: 'json',
-            data: { id_representation },
             url: "src/php/ajax/ajax_delete_representation.php",
-            success: function (data){
-                console.log(data);
+            data: {id_representation},
+            success: function (response) {
+                console.log("Réponse suppression:", response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Erreur AJAX suppression:", error, xhr.responseText);
             }
         });
     });
@@ -132,7 +136,7 @@ $(document).ready(function(){
     $('#zone_rapport, #zone_id_representation').hide();
     $('#submit_representation').val("Ajouter");
 
-    $('#nom_representation').on('blur', function(){
+    $('#nom_representation').on('blur', function () {
         let nom_representation = $(this).val();
         let param = 'nom_representation=' + encodeURIComponent(nom_representation);
 
@@ -141,13 +145,15 @@ $(document).ready(function(){
             dataType: 'json',
             data: param,
             url: "src/php/ajax/ajax_search_representation.php",
-            success: function(data){
-                if(data && data.length > 0){
+            success: function (data) {
+                if (data && data.length > 0) {
                     let rep = data[0];
                     $('#id_representation').val(rep.id_representation);
                     $('#type_representation').val(rep.type);
                     $('#date_representation').val(rep.date_representation);
                     $('#image_representation').val(rep.image);
+                    $('#description_representation').val(rep.description);
+                    $('#prix_representation').val(rep.prix);
                     $('#salle_representation').val(rep.salle);
                     $('#zone_id_representation').show();
                     $('#submit_representation').val("Mettre à jour");

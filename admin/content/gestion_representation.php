@@ -1,4 +1,3 @@
-<!-- gestion_representation.php -->
 <?php
 $representations = new Vue_representationsDAO($cnx);
 $liste = $representations->getAllRepresentations();
@@ -7,77 +6,151 @@ $salleDAO = new SalleDAO($cnx);
 $liste_s = $salleDAO->getSalles();
 ?>
 
-<p class="txtGras txtItalic red" id="ajouter_representation">
-    <a id="ajouter_representation_no_js" href="./index_.php?page=nouvelle_representation.php">Nouvelle Représentation</a>
-</p>
+<!-- Ajout de style pour le mode sombre et la description -->
+<style>
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #ffffff;
+            color: #ffffff;
+        }
 
-<div id="nouvelle_ligne"></div>
+        .table {
+            background-color: #1e1e1e;
+            border: 1px solid;
+        }
 
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Titre</th>
-        <th>Type</th>
-        <th>Date</th>
-        <th>Image</th>
-        <th>Salle</th>
-        <th>Nombre de sièges</th>
-        <th>SUPPRESSION</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($liste as $representation): ?>
-        <tr>
-            <th scope="row" id="<?= $representation->getId_representation(); ?>">
-                <?= $representation->getId_representation(); ?>
-            </th>
+        .table th, .table td {
+            border-color: #333;
+        }
 
-            <td contenteditable="true" data-champ="titre" id="<?= $representation->getId_representation(); ?>">
-                <?= $representation->getTitre(); ?>
-            </td>
+        .table thead {
+            background-color: #333;
+            color: #fff;
+        }
+    }
 
-            <td contenteditable="true" data-champ="type" id="<?= $representation->getId_representation(); ?>">
-                <?= $representation->getType(); ?>
-            </td>
+    .description-cell {
+        max-width: 250px; /* fixe la largeur */
+        white-space: normal; /* retour à la ligne normal */
+        overflow-wrap: break-word; /* coupe les mots très longs si besoin */
+        word-wrap: break-word;
+    }
+</style>
 
-            <td contenteditable="true" data-champ="date_representation" id="<?= $representation->getId_representation(); ?>">
-                <input type="date" value="<?= $representation->getDate_representation(); ?>" class="form-control date-input" id="date_<?= $representation->getId_representation(); ?>">
-            </td>
+<!-- Gestion des représentations -->
+<div class="container my-4">
+    <p class="fw-bold fst-italic text-danger" id="ajouter_representation">
+        <a id="ajouter_representation_no_js" href="./index_.php?page=nouvelle_representation.php"
+           class="btn btn-primary">
+            Nouvelle Représentation
+        </a>
+    </p>
+
+    <div id="nouvelle_ligne"></div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle text-center">
+            <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Salle</th>
+                <th>Nombre de sièges</th>
+                <th>Suppression</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($liste as $representation): ?>
+                <tr>
+                    <!-- Id -->
+                    <td><?= $representation->getId_representation(); ?></td>
+
+                    <!-- Titre -->
+                    <td contenteditable="true" data-champ="titre" id="<?= $representation->getId_representation(); ?>">
+                        <?= htmlspecialchars($representation->getTitre()); ?>
+                    </td>
+
+                    <!-- Type -->
+                    <td contenteditable="true" data-champ="type" id="<?= $representation->getId_representation(); ?>">
+                        <?php
+                        $type = htmlspecialchars($representation->getType());
+                        ?>
+                        <span class=""><?= $type; ?></span>
+                    </td>
+
+                    <!-- Date -->
+                    <td data-champ="date_representation" id="<?= $representation->getId_representation(); ?>">
+                        <input type="datetime-local"
+                               value="<?= date('Y-m-d\TH:i', strtotime($representation->getDate_representation())); ?>"
+                               class="form-control form-control-sm d-inline w-auto date-input"
+                               data-id="<?= $representation->getId_representation(); ?>">
+                    </td>
 
 
-            <td contenteditable="true" data-champ="image" id="<?= $representation->getId_representation(); ?>">
-                <!-- Affichage de l'image -->
-                <img src="../admin/assets/images/<?= $representation->getImage(); ?>" style="max-width: 140px; max-height: 140px; margin-right: 10px;">
-                <!-- Affichage du nom du fichier image -->
-                <?= $representation->getImage(); ?>
-            </td>
+                    <!-- Image -->
+                    <td id="<?= $representation->getId_representation(); ?>" data-champ="image">
+                        <div class="d-flex align-items-center">
+                            <img src="../admin/assets/images/<?= htmlspecialchars($representation->getImage()); ?>"
+                                 alt="Image"
+                                 class="img-fluid me-2"
+                                 style="max-width: 160px; max-height: 160px;">
+
+                            <span contenteditable="true"
+                                  data-champ="image"
+                                  id="<?= $representation->getId_representation(); ?>"
+                                  style="min-width: 100px; display: inline-block;">
+                                  <?= htmlspecialchars($representation->getImage()); ?>
+                            </span>
+                        </div>
+                    </td>
 
 
-            <td data-champ="salle" id="<?= $representation->getId_representation(); ?>">
-                <select class="form-select salle-select" data-id="<?= $representation->getId_representation(); ?>">
-                    <?php foreach ($liste_s as $salle): ?>
-                        <option value="<?= $salle->id_salle; ?>"
-                            <?= ($salle->id_salle == $representation->getSalle()) ? 'selected' : ''; ?>>
-                            <?= htmlspecialchars($salle->num_salle); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </td>
+                    <!-- Description -->
+                    <td class="description-cell" contenteditable="true" data-champ="description"
+                        id="<?= $representation->getId_representation(); ?>"
+                        title="<?= htmlspecialchars($representation->getDescription()); ?>">
+                        <?= nl2br(htmlspecialchars($representation->getDescription())); ?>
+                    </td>
 
-            <td contenteditable="false" data-champ="nb_sieges" id="<?= $representation->getId_representation(); ?>">
-                <?= $representation->getNb_sieges(); ?>
-            </td>
+                    <!-- Prix -->
+                    <td contenteditable="true" data-champ="prix" id="<?= $representation->getId_representation(); ?>">
+                        <?php
+                        $prix = htmlspecialchars($representation->getPrix());
+                        ?>
+                        <span class=""><?= $prix; ?></span>
+                    </td>
 
-            <td hidden="hidden" contenteditable="false" data-champ="num_salle" id="<?= $representation->getId_representation(); ?>">
-                <?= $representation->getNum_salle(); ?>
-            </td>
+                    <!-- Salle -->
+                    <td data-champ="salle" id="<?= $representation->getId_representation(); ?>">
+                        <i class="fa-solid fa-door-closed me-2"></i>
+                        <select class="form-select form-select-sm salle-select d-inline w-auto"
+                                data-id="<?= $representation->getId_representation(); ?>">
+                            <?php foreach ($liste_s as $salle): ?>
+                                <option value="<?= $salle->id_salle; ?>" <?= ($salle->id_salle == $representation->getSalle()) ? 'selected' : ''; ?>>
+                                    <?= htmlspecialchars($salle->num_salle); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
 
-            <td class="edit_no_js"><i class="fa-solid fa-pencil"></i></td>
-            <td class="delete" data-id="<?= $representation->getId_representation(); ?>">
-                <i class="fa-solid fa-trash"></i>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-</table>
+                    <!-- Nombre de sièges -->
+                    <td>
+                        <?= $representation->getNb_sieges(); ?>
+                    </td>
+
+                    <!-- Suppression -->
+                    <td class="text-danger delete" data-id="<?= $representation->getId_representation(); ?>"
+                        style="cursor: pointer;">
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
