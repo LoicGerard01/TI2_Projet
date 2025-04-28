@@ -14,7 +14,14 @@
                 </li>
             </ul>
             <div class="ms-auto p-2">
+                <?php if(isset($_SESSION['client'])) {
+                    ?>
+                    <a href="index_.php?page=disconnect.php">Déconnexion</a>
+                    <?php
+                } else {
+                ?>
                 <a href="index_.php?page=login.php">Connexion</a>
+                <?php } ?>
             </div>
 
             <form class="d-flex" role="search">

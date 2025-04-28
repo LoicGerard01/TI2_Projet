@@ -1,86 +1,84 @@
---
--- PostgreSQL database dump
---
 
--- Dumped from database version 17.2
--- Dumped by pg_dump version 17.2
 
--- Started on 2025-03-21 11:44:45
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
 
 --
--- TOC entry 238 (class 1255 OID 24676)
--- Name: ajouter_admin(character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 229 (class 1255 OID 24747)
+-- Name: ajout_representation(text, text, date, text, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.ajouter_admin(p_nom_admin character varying, p_login_admin character varying, p_password_admin character varying) RETURNS void
+CREATE FUNCTION public.ajout_representation(text, text, date, text, integer) RETURNS integer
     LANGUAGE plpgsql
     AS '
-BEGIN
-    INSERT INTO Admin (nom_admin, login_admin, password_admin)
-    VALUES (p_nom_admin, p_login_admin, p_password_admin);
-END;
+    DECLARE
+        p_titre ALIAS FOR $1;
+        p_type ALIAS FOR $2;
+        p_date ALIAS FOR $3;
+        p_image ALIAS FOR $4;
+        p_salle ALIAS FOR $5;
+        retour integer;
+    BEGIN
+        INSERT INTO representation (titre, type, date_representation, image, salle)
+        VALUES (p_titre, p_type, p_date, p_image, p_salle)
+        ON CONFLICT DO NOTHING;
+
+        SELECT INTO retour id_representation FROM representation WHERE titre = p_titre AND date_representation = p_date;
+
+        IF retour IS NULL THEN
+          RETURN -1;
+        ELSE
+          RETURN retour;
+        END IF;
+    END;
 ';
 
 
 --
--- TOC entry 234 (class 1255 OID 24672)
--- Name: ajouter_client(character varying, character varying, character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 245 (class 1255 OID 24754)
+-- Name: ajouter_client(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.ajouter_client(p_nom_client character varying, p_prenom_client character varying, p_email character varying, p_password character varying, p_mobile character varying) RETURNS void
+CREATE FUNCTION public.ajouter_client(p_nom_client text, p_prenom_client text, p_email text, p_password text, p_mobile text) RETURNS text
     LANGUAGE plpgsql
     AS '
+DECLARE
+    v_exists INTEGER;
 BEGIN
-    INSERT INTO Client (nom_client, prenom_client, email, password, mobile)
+    -- Vérifie si l''email existe déjà
+    SELECT COUNT(*) INTO v_exists
+    FROM client
+    WHERE email = p_email;
+
+    IF v_exists > 0 THEN
+        RETURN ''Email déjà utilisé'';
+    END IF;
+
+    -- Insertion du nouveau client
+    INSERT INTO client(nom_client, prenom_client, email, password, mobile)
     VALUES (p_nom_client, p_prenom_client, p_email, p_password, p_mobile);
+
+    RETURN 1;
 END;
 ';
 
 
 --
--- TOC entry 232 (class 1255 OID 24670)
--- Name: ajouter_reservation(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 230 (class 1255 OID 24748)
+-- Name: delete_representation(integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.ajouter_reservation(p_id_client integer, p_id_representation integer, p_id_salle integer) RETURNS void
+CREATE FUNCTION public.delete_representation(integer) RETURNS integer
     LANGUAGE plpgsql
     AS '
-BEGIN
-    INSERT INTO Reservation (date_reservation, id_client, id_representation, id_salle) 
-    VALUES (NOW(), p_id_client, p_id_representation, p_id_salle);
-END;
+    DECLARE p_id ALIAS FOR $1;
+    BEGIN
+        DELETE FROM representation WHERE id_representation = p_id;
+        RETURN 1;
+    END;
 ';
 
 
 --
--- TOC entry 229 (class 1255 OID 24667)
--- Name: ajouter_salle(character varying, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.ajouter_salle(p_num_salle character varying, p_nb_sieges integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    INSERT INTO Salle (num_salle, nb_sieges) 
-    VALUES (p_num_salle, p_nb_sieges);
-END;
-';
-
-
---
--- TOC entry 245 (class 1255 OID 24697)
+-- TOC entry 232 (class 1255 OID 24751)
 -- Name: get_admin(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -91,214 +89,98 @@ DECLARE
     v_nom_admin TEXT;
     v_pwd TEXT;
 BEGIN
-    -- Sélectionner le mot de passe et le nom de l''administrateur à partir de la table admin
     SELECT password_admin, nom_admin INTO v_pwd, v_nom_admin
     FROM admin
     WHERE login_admin = p_login;
 
-    -- Comparer le mot de passe
     IF v_pwd = p_password THEN
-        RETURN v_nom_admin;  -- Retourner le nom si le mot de passe est correct
+        RETURN v_nom_admin;
     ELSE
-        RETURN NULL;  -- Retourner NULL si le mot de passe est incorrect
+        RETURN NULL;
     END IF;
 END;
 ';
 
 
 --
--- TOC entry 241 (class 1255 OID 24679)
--- Name: get_admins(); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 246 (class 1255 OID 24753)
+-- Name: get_client(text, text); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.get_admins() RETURNS TABLE(id_admin integer, nom_admin character varying, login_admin character varying)
+CREATE FUNCTION public.get_client(p_email text, p_password text) RETURNS text
     LANGUAGE plpgsql
     AS '
+DECLARE
+    v_nom_client TEXT;
+    v_pwd TEXT;
 BEGIN
-    RETURN QUERY SELECT id_admin, nom_admin, login_admin FROM Admin;
+    SELECT nom_client, password INTO v_nom_client, v_pwd
+    FROM client
+    WHERE email = p_email;
+
+    IF v_pwd = p_password THEN
+        RETURN v_nom_client;
+    ELSE
+        RETURN NULL;
+    END IF;
 END;
 ';
 
 
 --
--- TOC entry 237 (class 1255 OID 24675)
--- Name: get_clients(); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 244 (class 1255 OID 24752)
+-- Name: update_ajax_representation(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.get_clients() RETURNS TABLE(id_client integer, nom_client character varying, prenom_client character varying, email character varying, mobile character varying)
+CREATE FUNCTION public.update_ajax_representation(champ text, valeur text, id_rep integer) RETURNS void
     LANGUAGE plpgsql
     AS '
 BEGIN
-    RETURN QUERY SELECT id_client, nom_client, prenom_client, email, mobile FROM Client;
+    IF champ = ''titre'' THEN
+        UPDATE representation SET titre = valeur WHERE id_representation = id_rep;
+    ELSIF champ = ''type'' THEN
+        UPDATE representation SET type = valeur WHERE id_representation = id_rep;
+    ELSIF champ = ''date_representation'' THEN
+        UPDATE representation SET date_representation = valeur::date WHERE id_representation = id_rep;
+    ELSIF champ = ''image'' THEN
+        UPDATE representation SET image = valeur WHERE id_representation = id_rep;
+    ELSIF champ = ''salle'' THEN
+        UPDATE representation SET salle = valeur::int WHERE id_representation = id_rep;
+    ELSE
+        RAISE EXCEPTION ''Champ invalide : %'', champ;
+    END IF;
 END;
 ';
 
 
 --
--- TOC entry 243 (class 1255 OID 24693)
--- Name: get_representations(); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 231 (class 1255 OID 24750)
+-- Name: update_representation(integer, text, text, date, text, integer); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.get_representations() RETURNS TABLE(id_representation integer, titre character varying, type character varying, date_representation date)
+CREATE FUNCTION public.update_representation(integer, text, text, date, text, integer) RETURNS integer
     LANGUAGE plpgsql
     AS '
-BEGIN
-    RETURN QUERY 
-    SELECT id_representation, titre, type, date_representation 
-    FROM Representation;
-END;
-';
+    DECLARE
+        p_id_representation ALIAS FOR $1;
+        p_titre ALIAS FOR $2;
+        p_type ALIAS FOR $3;
+        p_date ALIAS FOR $4;
+        p_image ALIAS FOR $5;
+        p_salle ALIAS FOR $6;
+        retour integer;
+    BEGIN
+        UPDATE representation
+        SET titre = p_titre,
+            type = p_type,
+            date_representation = p_date,
+            image = p_image,
+            salle = p_salle
+        WHERE id_representation = p_id_representation;
 
-
---
--- TOC entry 242 (class 1255 OID 24692)
--- Name: get_reservations(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.get_reservations() RETURNS TABLE(id_reservation integer, date_reservation timestamp without time zone, nom_client character varying, prenom_client character varying, email character varying, representation character varying, num_salle character varying)
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    RETURN QUERY 
-    SELECT 
-        r.id_reservation, 
-        r.date_reservation, 
-        c.nom_client, 
-        c.prenom_client, 
-        c.email, 
-        rep.titre AS representation, 
-        s.num_salle
-    FROM Reservation r
-    JOIN Client c ON r.id_client = c.id_client
-    JOIN Representation rep ON r.id_representation = rep.id_representation
-    JOIN Salle s ON r.id_salle = s.id_salle;
-END;
-';
-
-
---
--- TOC entry 244 (class 1255 OID 24694)
--- Name: get_salles(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.get_salles() RETURNS TABLE(id_salle integer, num_salle character varying, nb_sieges integer)
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    RETURN QUERY 
-    SELECT id_salle, num_salle, nb_sieges 
-    FROM Salle;
-END;
-';
-
-
---
--- TOC entry 239 (class 1255 OID 24677)
--- Name: modifier_admin(integer, character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.modifier_admin(p_id_admin integer, p_nom_admin character varying, p_login_admin character varying, p_password_admin character varying) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    UPDATE Admin 
-    SET nom_admin = p_nom_admin, 
-        login_admin = p_login_admin, 
-        password_admin = p_password_admin
-    WHERE id_admin = p_id_admin;
-END;
-';
-
-
---
--- TOC entry 235 (class 1255 OID 24673)
--- Name: modifier_client(integer, character varying, character varying, character varying, character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.modifier_client(p_id_client integer, p_nom_client character varying, p_prenom_client character varying, p_email character varying, p_password character varying, p_mobile character varying) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    UPDATE Client 
-    SET nom_client = p_nom_client, 
-        prenom_client = p_prenom_client, 
-        email = p_email, 
-        password = p_password, 
-        mobile = p_mobile
-    WHERE id_client = p_id_client;
-END;
-';
-
-
---
--- TOC entry 230 (class 1255 OID 24668)
--- Name: modifier_salle(integer, character varying, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.modifier_salle(p_id_salle integer, p_num_salle character varying, p_nb_sieges integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    UPDATE Salle 
-    SET num_salle = p_num_salle, nb_sieges = p_nb_sieges
-    WHERE id_salle = p_id_salle;
-END;
-';
-
-
---
--- TOC entry 240 (class 1255 OID 24678)
--- Name: supprimer_admin(integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.supprimer_admin(p_id_admin integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    DELETE FROM Admin WHERE id_admin = p_id_admin;
-END;
-';
-
-
---
--- TOC entry 236 (class 1255 OID 24674)
--- Name: supprimer_client(integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.supprimer_client(p_id_client integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    DELETE FROM Client WHERE id_client = p_id_client;
-END;
-';
-
-
---
--- TOC entry 233 (class 1255 OID 24671)
--- Name: supprimer_reservation(integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.supprimer_reservation(p_id_reservation integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    DELETE FROM Reservation WHERE id_reservation = p_id_reservation;
-END;
-';
-
-
---
--- TOC entry 231 (class 1255 OID 24669)
--- Name: supprimer_salle(integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.supprimer_salle(p_id_salle integer) RETURNS void
-    LANGUAGE plpgsql
-    AS '
-BEGIN
-    DELETE FROM Salle WHERE id_salle = p_id_salle;
-END;
+        GET DIAGNOSTICS retour = ROW_COUNT;
+        RETURN retour;
+    END;
 ';
 
 
@@ -312,10 +194,10 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.admin (
-    id_admin integer NOT NULL,
-    nom_admin character varying(50) NOT NULL,
-    login_admin character varying(50) NOT NULL,
-    password_admin character varying(50) NOT NULL
+                              id_admin integer NOT NULL,
+                              nom_admin character varying(50) NOT NULL,
+                              login_admin character varying(50) NOT NULL,
+                              password_admin character varying(50) NOT NULL
 );
 
 
@@ -334,7 +216,7 @@ CREATE SEQUENCE public.admin_id_admin_seq
 
 
 --
--- TOC entry 4928 (class 0 OID 0)
+-- TOC entry 4920 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: admin_id_admin_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -348,12 +230,12 @@ ALTER SEQUENCE public.admin_id_admin_seq OWNED BY public.admin.id_admin;
 --
 
 CREATE TABLE public.client (
-    id_client integer NOT NULL,
-    nom_client character varying(50) NOT NULL,
-    prenom_client character varying(50),
-    email character varying(50) NOT NULL,
-    password character varying(50),
-    mobile character varying(50)
+                               id_client integer NOT NULL,
+                               nom_client character varying(50) NOT NULL,
+                               prenom_client character varying(50),
+                               email character varying(50) NOT NULL,
+                               password character varying(50),
+                               mobile character varying(50)
 );
 
 
@@ -372,7 +254,7 @@ CREATE SEQUENCE public.client_id_client_seq
 
 
 --
--- TOC entry 4929 (class 0 OID 0)
+-- TOC entry 4921 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: client_id_client_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -386,11 +268,12 @@ ALTER SEQUENCE public.client_id_client_seq OWNED BY public.client.id_client;
 --
 
 CREATE TABLE public.representation (
-    id_representation integer NOT NULL,
-    titre character varying(50) NOT NULL,
-    type character varying(50),
-    date_representation date,
-    image text
+                                       id_representation integer NOT NULL,
+                                       titre character varying(50) NOT NULL,
+                                       type character varying(50),
+                                       date_representation date,
+                                       image text,
+                                       salle integer
 );
 
 
@@ -409,7 +292,7 @@ CREATE SEQUENCE public.representation_id_representation_seq
 
 
 --
--- TOC entry 4930 (class 0 OID 0)
+-- TOC entry 4922 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: representation_id_representation_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -423,11 +306,11 @@ ALTER SEQUENCE public.representation_id_representation_seq OWNED BY public.repre
 --
 
 CREATE TABLE public.reservation (
-    id_reservation integer NOT NULL,
-    date_reservation timestamp without time zone NOT NULL,
-    id_client integer NOT NULL,
-    id_representation integer NOT NULL,
-    id_salle integer NOT NULL
+                                    id_reservation integer NOT NULL,
+                                    date_reservation timestamp without time zone NOT NULL,
+                                    id_client integer NOT NULL,
+                                    id_representation integer NOT NULL,
+                                    id_salle integer NOT NULL
 );
 
 
@@ -446,7 +329,7 @@ CREATE SEQUENCE public.reservation_id_reservation_seq
 
 
 --
--- TOC entry 4931 (class 0 OID 0)
+-- TOC entry 4923 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: reservation_id_reservation_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -460,9 +343,9 @@ ALTER SEQUENCE public.reservation_id_reservation_seq OWNED BY public.reservation
 --
 
 CREATE TABLE public.salle (
-    id_salle integer NOT NULL,
-    num_salle character varying(50) NOT NULL,
-    nb_sieges integer NOT NULL
+                              id_salle integer NOT NULL,
+                              num_salle character varying(50) NOT NULL,
+                              nb_sieges integer NOT NULL
 );
 
 
@@ -481,7 +364,7 @@ CREATE SEQUENCE public.salle_id_salle_seq
 
 
 --
--- TOC entry 4932 (class 0 OID 0)
+-- TOC entry 4924 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: salle_id_salle_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -490,18 +373,23 @@ ALTER SEQUENCE public.salle_id_salle_seq OWNED BY public.salle.id_salle;
 
 
 --
--- TOC entry 228 (class 1259 OID 24688)
+-- TOC entry 228 (class 1259 OID 24723)
 -- Name: vue_representations_a_venir; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.vue_representations_a_venir AS
- SELECT id_representation,
-    titre,
-    type,
-    date_representation
-   FROM public.representation
-  WHERE (date_representation >= CURRENT_DATE)
-  ORDER BY date_representation;
+SELECT r.id_representation,
+       r.titre,
+       r.type,
+       r.date_representation,
+       r.salle,
+       r.image,
+       s.nb_sieges,
+       s.num_salle
+FROM (public.representation r
+    JOIN public.salle s ON ((s.id_salle = r.salle)))
+WHERE (r.date_representation >= CURRENT_DATE)
+ORDER BY r.date_representation;
 
 
 --
@@ -510,22 +398,22 @@ CREATE VIEW public.vue_representations_a_venir AS
 --
 
 CREATE VIEW public.vue_reservations AS
- SELECT r.id_reservation,
-    r.date_reservation,
-    c.nom_client,
-    c.prenom_client,
-    c.email,
-    rep.titre AS representation,
-    s.num_salle,
-    s.nb_sieges
-   FROM (((public.reservation r
-     JOIN public.client c ON ((r.id_client = c.id_client)))
-     JOIN public.representation rep ON ((r.id_representation = rep.id_representation)))
-     JOIN public.salle s ON ((r.id_salle = s.id_salle)));
+SELECT r.id_reservation,
+       r.date_reservation,
+       c.nom_client,
+       c.prenom_client,
+       c.email,
+       rep.titre AS representation,
+       s.num_salle,
+       s.nb_sieges
+FROM (((public.reservation r
+    JOIN public.client c ON ((r.id_client = c.id_client)))
+    JOIN public.representation rep ON ((r.id_representation = rep.id_representation)))
+    JOIN public.salle s ON ((r.id_salle = s.id_salle)));
 
 
 --
--- TOC entry 4742 (class 2604 OID 24600)
+-- TOC entry 4732 (class 2604 OID 24600)
 -- Name: admin id_admin; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -533,7 +421,7 @@ ALTER TABLE ONLY public.admin ALTER COLUMN id_admin SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4741 (class 2604 OID 24589)
+-- TOC entry 4731 (class 2604 OID 24589)
 -- Name: client id_client; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -541,7 +429,7 @@ ALTER TABLE ONLY public.client ALTER COLUMN id_client SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 4743 (class 2604 OID 24609)
+-- TOC entry 4733 (class 2604 OID 24609)
 -- Name: representation id_representation; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -549,7 +437,7 @@ ALTER TABLE ONLY public.representation ALTER COLUMN id_representation SET DEFAUL
 
 
 --
--- TOC entry 4744 (class 2604 OID 24616)
+-- TOC entry 4734 (class 2604 OID 24616)
 -- Name: reservation id_reservation; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -557,7 +445,7 @@ ALTER TABLE ONLY public.reservation ALTER COLUMN id_reservation SET DEFAULT next
 
 
 --
--- TOC entry 4740 (class 2604 OID 24580)
+-- TOC entry 4730 (class 2604 OID 24580)
 -- Name: salle id_salle; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -565,7 +453,7 @@ ALTER TABLE ONLY public.salle ALTER COLUMN id_salle SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4918 (class 0 OID 24597)
+-- TOC entry 4909 (class 0 OID 24597)
 -- Dependencies: 222
 -- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -575,7 +463,7 @@ INSERT INTO public.admin (id_admin, nom_admin, login_admin, password_admin) VALU
 
 
 --
--- TOC entry 4916 (class 0 OID 24586)
+-- TOC entry 4907 (class 0 OID 24586)
 -- Dependencies: 220
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -583,21 +471,25 @@ INSERT INTO public.admin (id_admin, nom_admin, login_admin, password_admin) VALU
 INSERT INTO public.client (id_client, nom_client, prenom_client, email, password, mobile) VALUES (1, 'Dupont', 'Jean', 'jean.dupont@example.com', 'mdp123', '0601020304');
 INSERT INTO public.client (id_client, nom_client, prenom_client, email, password, mobile) VALUES (2, 'Martin', 'Sophie', 'sophie.martin@example.com', 'mdp456', '0605060708');
 INSERT INTO public.client (id_client, nom_client, prenom_client, email, password, mobile) VALUES (3, 'Durand', 'Paul', 'paul.durand@example.com', 'mdp789', '0608091011');
+INSERT INTO public.client (id_client, nom_client, prenom_client, email, password, mobile) VALUES (4, 'Durand', 'Sophie', 'sophie.durand@example.com', 'motdepasse123', '0478123457');
+INSERT INTO public.client (id_client, nom_client, prenom_client, email, password, mobile) VALUES (8, 'bob', 'bob', 'Bob', 'Bob', '11111111111');
 
 
 --
--- TOC entry 4920 (class 0 OID 24606)
+-- TOC entry 4911 (class 0 OID 24606)
 -- Dependencies: 224
 -- Data for Name: representation; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.representation (id_representation, titre, type, date_representation, image) VALUES (1, 'Concert Rock', 'Musique', '2025-04-15', NULL);
-INSERT INTO public.representation (id_representation, titre, type, date_representation, image) VALUES (2, 'Pièce de Théâtre', 'Théâtre', '2025-05-20', NULL);
-INSERT INTO public.representation (id_representation, titre, type, date_representation, image) VALUES (3, 'Ballet Classique', 'Danse', '2025-06-10', NULL);
+INSERT INTO public.representation (id_representation, titre, type, date_representation, image, salle) VALUES (1, 'Concert Rock', 'Musique', '2025-04-15', NULL, 1);
+INSERT INTO public.representation (id_representation, titre, type, date_representation, image, salle) VALUES (11, 'Dr. Jekyll & Mr. Hyde', 'Théatre', '2025-06-19', 'dr_Jekyll.jpeg', 4);
+INSERT INTO public.representation (id_representation, titre, type, date_representation, image, salle) VALUES (12, 'test', 'TEST', '2025-04-24', 'azddazdzadza', 1);
+INSERT INTO public.representation (id_representation, titre, type, date_representation, image, salle) VALUES (2, 'Romeo & Juliet', 'Théâtre', '2025-05-30', 'romeo_juliet.jpg', 3);
+INSERT INTO public.representation (id_representation, titre, type, date_representation, image, salle) VALUES (3, 'La Bohème', 'Opéra', '2025-06-10', 'boheme.png', 4);
 
 
 --
--- TOC entry 4922 (class 0 OID 24613)
+-- TOC entry 4913 (class 0 OID 24613)
 -- Dependencies: 226
 -- Data for Name: reservation; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -608,7 +500,7 @@ INSERT INTO public.reservation (id_reservation, date_reservation, id_client, id_
 
 
 --
--- TOC entry 4914 (class 0 OID 24577)
+-- TOC entry 4905 (class 0 OID 24577)
 -- Dependencies: 218
 -- Data for Name: salle; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -616,10 +508,11 @@ INSERT INTO public.reservation (id_reservation, date_reservation, id_client, id_
 INSERT INTO public.salle (id_salle, num_salle, nb_sieges) VALUES (1, '101', 100);
 INSERT INTO public.salle (id_salle, num_salle, nb_sieges) VALUES (2, '102', 150);
 INSERT INTO public.salle (id_salle, num_salle, nb_sieges) VALUES (3, '103', 200);
+INSERT INTO public.salle (id_salle, num_salle, nb_sieges) VALUES (4, '201', 120);
 
 
 --
--- TOC entry 4933 (class 0 OID 0)
+-- TOC entry 4925 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: admin_id_admin_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -628,25 +521,25 @@ SELECT pg_catalog.setval('public.admin_id_admin_seq', 2, true);
 
 
 --
--- TOC entry 4934 (class 0 OID 0)
+-- TOC entry 4926 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: client_id_client_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.client_id_client_seq', 3, true);
+SELECT pg_catalog.setval('public.client_id_client_seq', 8, true);
 
 
 --
--- TOC entry 4935 (class 0 OID 0)
+-- TOC entry 4927 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: representation_id_representation_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.representation_id_representation_seq', 3, true);
+SELECT pg_catalog.setval('public.representation_id_representation_seq', 13, true);
 
 
 --
--- TOC entry 4936 (class 0 OID 0)
+-- TOC entry 4928 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: reservation_id_reservation_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -655,16 +548,16 @@ SELECT pg_catalog.setval('public.reservation_id_reservation_seq', 3, true);
 
 
 --
--- TOC entry 4937 (class 0 OID 0)
+-- TOC entry 4929 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: salle_id_salle_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.salle_id_salle_seq', 3, true);
+SELECT pg_catalog.setval('public.salle_id_salle_seq', 4, true);
 
 
 --
--- TOC entry 4756 (class 2606 OID 24604)
+-- TOC entry 4746 (class 2606 OID 24604)
 -- Name: admin admin_login_admin_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -673,7 +566,7 @@ ALTER TABLE ONLY public.admin
 
 
 --
--- TOC entry 4758 (class 2606 OID 24602)
+-- TOC entry 4748 (class 2606 OID 24602)
 -- Name: admin admin_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -682,7 +575,7 @@ ALTER TABLE ONLY public.admin
 
 
 --
--- TOC entry 4750 (class 2606 OID 24593)
+-- TOC entry 4740 (class 2606 OID 24593)
 -- Name: client client_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -691,7 +584,7 @@ ALTER TABLE ONLY public.client
 
 
 --
--- TOC entry 4752 (class 2606 OID 24595)
+-- TOC entry 4742 (class 2606 OID 24595)
 -- Name: client client_mobile_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -700,7 +593,7 @@ ALTER TABLE ONLY public.client
 
 
 --
--- TOC entry 4754 (class 2606 OID 24591)
+-- TOC entry 4744 (class 2606 OID 24591)
 -- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -709,7 +602,7 @@ ALTER TABLE ONLY public.client
 
 
 --
--- TOC entry 4760 (class 2606 OID 24611)
+-- TOC entry 4750 (class 2606 OID 24611)
 -- Name: representation representation_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -718,7 +611,7 @@ ALTER TABLE ONLY public.representation
 
 
 --
--- TOC entry 4762 (class 2606 OID 24618)
+-- TOC entry 4752 (class 2606 OID 24618)
 -- Name: reservation reservation_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -727,7 +620,7 @@ ALTER TABLE ONLY public.reservation
 
 
 --
--- TOC entry 4746 (class 2606 OID 24584)
+-- TOC entry 4736 (class 2606 OID 24584)
 -- Name: salle salle_num_salle_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -736,7 +629,7 @@ ALTER TABLE ONLY public.salle
 
 
 --
--- TOC entry 4748 (class 2606 OID 24582)
+-- TOC entry 4738 (class 2606 OID 24582)
 -- Name: salle salle_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -745,7 +638,16 @@ ALTER TABLE ONLY public.salle
 
 
 --
--- TOC entry 4763 (class 2606 OID 24619)
+-- TOC entry 4753 (class 2606 OID 24714)
+-- Name: representation fk_salle; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.representation
+    ADD CONSTRAINT fk_salle FOREIGN KEY (salle) REFERENCES public.salle(id_salle) NOT VALID;
+
+
+--
+-- TOC entry 4754 (class 2606 OID 24619)
 -- Name: reservation reservation_id_client_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -754,7 +656,7 @@ ALTER TABLE ONLY public.reservation
 
 
 --
--- TOC entry 4764 (class 2606 OID 24624)
+-- TOC entry 4755 (class 2606 OID 24624)
 -- Name: reservation reservation_id_representation_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -763,7 +665,7 @@ ALTER TABLE ONLY public.reservation
 
 
 --
--- TOC entry 4765 (class 2606 OID 24629)
+-- TOC entry 4756 (class 2606 OID 24629)
 -- Name: reservation reservation_id_salle_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -771,9 +673,8 @@ ALTER TABLE ONLY public.reservation
     ADD CONSTRAINT reservation_id_salle_fkey FOREIGN KEY (id_salle) REFERENCES public.salle(id_salle);
 
 
--- Completed on 2025-03-21 11:44:45
+-- Completed on 2025-04-23 10:42:37
 
 --
 -- PostgreSQL database dump complete
 --
-

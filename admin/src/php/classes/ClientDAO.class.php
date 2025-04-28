@@ -21,10 +21,10 @@ class ClientDAO
             $resultset->bindValue(':password', $password);
             $resultset->execute();
 
-            $email = $resultset->fetchColumn(0);
+            $nom = $resultset->fetchColumn(0);
 
             $this->_bd->commit();
-            return $email;
+            return $nom;
         } catch (PDOException $e) {
             $this->_bd->rollback();
             print "Échec de la requête : " . $e->getMessage();

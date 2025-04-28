@@ -10,12 +10,14 @@ if(isset($_POST['login_submit'])){
         header('location: admin/index_.php?page=accueil_admin.php');
         exit();
     } else {
+        print "ici";
         $clientDao = new ClientDAO($cnx);
-        $email = $clientDao->getClient($login, $password);
+        $nom_client = $clientDao->getClient($login, $password);
 
-        if($email) {
-            $_SESSION['client'] = $email;
-            header('location: index_.php?page=accueil.php');
+        if($nom_client) {
+            $_SESSION['client'] = $nom_client;
+            $_SESSION['page']="accueil_client.php"; //peut-être inutile
+            header('location: index_.php?page=accueil_client.php');
             exit();
         } else {
             $erreur = "Login ou mot de passe incorrect";
