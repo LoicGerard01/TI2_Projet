@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction login client">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correciton gestion admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/gestion_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/gestion_representation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_representation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/client_menu.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pdo_db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745839232043</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="correciton gestion admin">
+      <option name="closed" value="true" />
+      <created>1745860156312</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745860156312</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +231,8 @@
     <MESSAGE value="ajout tableau d'affichage des représentations ( ajout et suppression fonctionnel , pas la modif)" />
     <MESSAGE value="maj tableau admin" />
     <MESSAGE value="correction login client" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction login client" />
+    <MESSAGE value="correciton gestion admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="correciton gestion admin" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

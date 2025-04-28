@@ -43,7 +43,7 @@ $(document).ready(function () {
         });
     });
 
-// Fonction générique pour faire un appel AJAX
+    // Fonction générique pour faire un appel AJAX
     function updateRepresentation(champ, valeur, id_representation) {
         if (champ && valeur && id_representation) {
             $.ajax({
@@ -83,8 +83,6 @@ $(document).ready(function () {
         updateRepresentation(champ, valeur, id_representation);
     });
 
-
-
     // Modification de la DATE
     $('.date-input').on('change', function () {
         let valeur = $(this).val();
@@ -110,6 +108,17 @@ $(document).ready(function () {
         console.log("Update salle:", champ, "New value:", valeur, "For ID:", id);
 
         updateRepresentation(champ, valeur, id);
+    });
+
+    // Modification du nom de l'image
+    $('td[data-champ="image"] span[contenteditable="true"]').on('blur', function() {
+        let champ = 'image';
+        let valeur = $(this).text().trim();
+        let id_representation = $(this).attr('id');
+
+        console.log("Update image:", champ, "New value:", valeur, "For ID:", id_representation);
+
+        updateRepresentation(champ, valeur, id_representation);
     });
 
     // Suppression d'une ligne
