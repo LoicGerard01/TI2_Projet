@@ -12,14 +12,14 @@ if(isset($_POST['login_submit'])){
     } else {
         print "ici";
         $clientDao = new ClientDAO($cnx);
-        $nom_client = $clientDao->getClient($login, $password);
+        $client = $clientDao->getClient($login, $password);
 
-        if($nom_client) {
-            $_SESSION['client'] = $nom_client;
-            $_SESSION['page']="accueil_client.php"; //peut-être inutile
+        if($client) {
+            $_SESSION['client'] = $client; // contient toutes les infos du client
             header('location: index_.php?page=accueil_client.php');
             exit();
-        } else {
+        }
+        else {
             $erreur = "Login ou mot de passe incorrect";
         }
     }

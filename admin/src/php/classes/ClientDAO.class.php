@@ -13,7 +13,7 @@ class ClientDAO
 
     public function getClient($email, $password)
     {
-        $query = "SELECT get_client(:email, :password) AS nom";
+        $query = "SELECT * FROM client WHERE email = :email AND password = :password";
         try {
             $this->_bd->beginTransaction();
             $resultset = $this->_bd->prepare($query);
@@ -21,7 +21,7 @@ class ClientDAO
             $resultset->bindValue(':password', $password);
             $resultset->execute();
 
-            $nom = $resultset->fetchColumn(0);
+            $nom = $resultset->fetch(PDO::FETCH_ASSOC);
 
             $this->_bd->commit();
             return $nom;

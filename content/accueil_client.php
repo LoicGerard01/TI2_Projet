@@ -1,6 +1,7 @@
 <?php
 require('./admin/src/php/utils/check_connection_client.php');
-print "<h2 class='my-4'>Bienvenue, ".htmlspecialchars($_SESSION['client'])." 👋</h2>";
+//var_dump($_SESSION['client']);
+print "<h2 class='my-4'>Bienvenue, ".htmlspecialchars($_SESSION['client']['prenom_client'])." !</h2>";
 $representations = new Vue_representationsDAO($cnx);
 $liste = $representations->getAllRepresentations();
 $title = "Accueil Client";
