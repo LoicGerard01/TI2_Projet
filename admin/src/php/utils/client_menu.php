@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index_.php?page=mes_reservations.php">Mes réservations</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index_.php?page=profil_client.php">Consulter mon profil</a>
+                </li>
             </ul>
             <a href="index_.php?page=disconnect.php">Déconnexion</a>
             <form class="d-flex" role="search">
