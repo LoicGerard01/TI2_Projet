@@ -26,6 +26,18 @@ class Vue_reservationsDAO{
         return new Vue_reservations($data);
     }
 
+    public function getReservationsByClient($id_client)
+    {
+        $sql = "SELECT * FROM vue_reservation_client WHERE id_client = :id_client AND date_representation > NOW()";
+        $result = $this->_bd->prepare($sql);
+        $result->bindValue(':id_client', $id_client);
+        $result->execute();
+        while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
+            $this->_array[] = new Vue_reservations($data);
+        }
+        return $this->_array;
+    }
+
 
     public function getId_reservation()
     {
