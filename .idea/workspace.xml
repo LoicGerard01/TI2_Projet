@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction var session client">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de profil + réservations actuelles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil_client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/mes_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/mes_reservations.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/profil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/profil_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,30 +58,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-PHP": "PHP",
-    "Notification.DoNotAsk-PHP": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/projet/admin/src/php/classes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-PHP&quot;: &quot;PHP&quot;,
+    &quot;Notification.DoNotAsk-PHP&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/projet/admin/src/php/classes&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\projet\admin\src\php\classes" />
@@ -122,7 +125,8 @@
       <workItem from="1744100855284" duration="8777000" />
       <workItem from="1744717007200" duration="9630000" />
       <workItem from="1745313836425" duration="11534000" />
-      <workItem from="1745913203236" duration="4180000" />
+      <workItem from="1745913203236" duration="4410000" />
+      <workItem from="1746004042900" duration="1623000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -252,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745916437859</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="ajout page de profil + réservations actuelles">
+      <option name="closed" value="true" />
+      <created>1745917535215</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1745917535215</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +281,8 @@
     <MESSAGE value="correciton gestion admin" />
     <MESSAGE value="ajout page client" />
     <MESSAGE value="correction var session client" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction var session client" />
+    <MESSAGE value="ajout page de profil + réservations actuelles" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout page de profil + réservations actuelles" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

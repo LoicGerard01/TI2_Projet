@@ -1,4 +1,6 @@
 <?php
+require('./admin/src/php/utils/check_connection_client.php');
+
 $reservationDAO = new Vue_reservationsDAO($cnx);
 $id_client = $_SESSION['client']['id_client'];
 $reservations = $reservationDAO->getReservationsByClient($id_client);

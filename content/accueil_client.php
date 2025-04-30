@@ -3,10 +3,12 @@ require('./admin/src/php/utils/check_connection_client.php');
 //var_dump($_SESSION['client']);
 print "<h2 class='my-4'>Bienvenue, ".htmlspecialchars($_SESSION['client']['prenom_client'])." !</h2>";
 $representations = new Vue_representationsDAO($cnx);
-$liste = $representations->getAllRepresentations();
+$liste = $representations->getUpcomingRepresentations();
 $title = "Accueil Client";
 $salleDAO = new SalleDAO($cnx);
 ?>
+
+<h3>Nos programmes à venir prochainement </h3>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php foreach ($liste as $representation): ?>
@@ -20,7 +22,8 @@ $salleDAO = new SalleDAO($cnx);
                     <h5 class="card-title"><?= htmlspecialchars($representation->getTitre()); ?></h5>
                     <p class="card-text">
                         <strong>Type :</strong> <?= htmlspecialchars($representation->getType()); ?><br>
-                        <strong>Date :</strong> <?= htmlspecialchars(date('d/m/Y', strtotime($representation->getDate_representation()))); ?><br>
+                        <strong>Date :</strong> <?= htmlspecialchars(date('d/m/Y H:i', strtotime($representation->getDate_representation()))); ?><br>
+                        <strong>Prix :</strong> <?= htmlspecialchars($representation->getPrix()); ?>
                     </p>
 
                     <!-- Description Button (Popup) -->

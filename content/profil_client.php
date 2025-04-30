@@ -1,4 +1,6 @@
 <?php
+require('./admin/src/php/utils/check_connection_client.php');
+
 $client = $_SESSION['client'];
 $title = "Profil Client";
 $clientDAO = new ClientDAO($cnx);

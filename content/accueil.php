@@ -1,10 +1,11 @@
 <?php
 $representations = new Vue_representationsDAO($cnx);
-$liste = $representations->getAllRepresentations();
+$liste = $representations->getUpcomingRepresentations();
 $title = "Accueil Client";
 $salleDAO = new SalleDAO($cnx);
 ?>
 
+<h3>Nos programmes à venir prochainement </h3>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php foreach ($liste as $representation): ?>
         <div class="col">
@@ -17,7 +18,8 @@ $salleDAO = new SalleDAO($cnx);
                     <h5 class="card-title"><?= htmlspecialchars($representation->getTitre()); ?></h5>
                     <p class="card-text">
                         <strong>Type :</strong> <?= htmlspecialchars($representation->getType()); ?><br>
-                        <strong>Date :</strong> <?= htmlspecialchars(date('d/m/Y', strtotime($representation->getDate_representation()))); ?><br>
+                        <strong>Date :</strong> <?= htmlspecialchars(date('d/m/Y H:i', strtotime($representation->getDate_representation()))); ?><br>
+                        <strong>Prix :</strong> <?= htmlspecialchars($representation->getPrix()); ?>
                     </p>
 
                     <!-- Description Button (Popup) -->
@@ -42,17 +44,14 @@ $salleDAO = new SalleDAO($cnx);
                             </div>
                         </div>
                     </div>
-
-                    <!-- Reservation Button (only visible if client is logged in) -->
                     <?php if (isset($_SESSION['client']) && !empty($_SESSION['client'])): ?>
                         <button type="button" class="btn btn-success mt-3" onclick="window.location.href='reservations.php?representation_id=<?= $representation->getId_representation(); ?>'">
                             Réserver
                         </button>
                     <?php else: ?>
-                        <!-- Tooltip for not logged in users -->
-                        <button class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez vous connecter pour réserver">
+                        <a href="index_.php?page=login.php" class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez vous connecter pour réserver">
                             Se connecter pour réserver
-                        </button>
+                        </a>
                     <?php endif; ?>
                 </div>
             </div>
