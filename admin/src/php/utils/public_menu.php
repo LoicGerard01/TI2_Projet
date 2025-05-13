@@ -20,7 +20,9 @@
                     <?php
                 } else {
                 ?>
-                <a href="index_.php?page=login.php">Connexion</a>
+                <a href="index_.php?page=login.php">Connexion</a><br>
+                    <a href="index_.php?page=register.php">S'inscrire</a>
+
                 <?php } ?>
             </div>
 

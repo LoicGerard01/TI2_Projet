@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de profil + réservations actuelles">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="corrections affichage client">
+      <change afterPath="$PROJECT_DIR$/content/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/mes_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/mes_reservations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/profil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/profil_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +122,8 @@
       <workItem from="1744717007200" duration="9630000" />
       <workItem from="1745313836425" duration="11534000" />
       <workItem from="1745913203236" duration="4410000" />
-      <workItem from="1746004042900" duration="1623000" />
+      <workItem from="1746004042900" duration="2010000" />
+      <workItem from="1747129310988" duration="969000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -264,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745917535215</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="corrections affichage client">
+      <option name="closed" value="true" />
+      <created>1746005931236</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746005931236</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +287,8 @@
     <MESSAGE value="ajout page client" />
     <MESSAGE value="correction var session client" />
     <MESSAGE value="ajout page de profil + réservations actuelles" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout page de profil + réservations actuelles" />
+    <MESSAGE value="corrections affichage client" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrections affichage client" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
