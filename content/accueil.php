@@ -13,7 +13,6 @@ $salleDAO = new SalleDAO($cnx);
                 <!-- Image -->
                 <img src="./admin/assets/images/<?= htmlspecialchars($representation->getImage()); ?>" class="card-img-top" alt="<?= htmlspecialchars($representation->getTitre()); ?>">
 
-                <!-- Card Body -->
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($representation->getTitre()); ?></h5>
                     <p class="card-text">
@@ -22,12 +21,10 @@ $salleDAO = new SalleDAO($cnx);
                         <strong>Prix :</strong> <?= htmlspecialchars($representation->getPrix()); ?>
                     </p>
 
-                    <!-- Description Button (Popup) -->
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalDescription_<?= $representation->getId_representation(); ?>">
                         Voir la description
                     </button>
 
-                    <!-- Modal for Description -->
                     <div class="modal fade" id="modalDescription_<?= $representation->getId_representation(); ?>" tabindex="-1" aria-labelledby="modalDescriptionLabel_<?= $representation->getId_representation(); ?>" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -45,9 +42,12 @@ $salleDAO = new SalleDAO($cnx);
                         </div>
                     </div>
                     <?php if (isset($_SESSION['client']) && !empty($_SESSION['client'])): ?>
-                        <button type="button" class="btn btn-success mt-3" onclick="window.location.href='reservations.php?representation_id=<?= $representation->getId_representation(); ?>'">
+                        <a href="index_.php?page=reservation_confirmation.php&id_representation=<?= $representation->getId_representation(); ?>&id_salle=<?= $representation->getSalle(); ?>" class="btn btn-success mt-3">
                             Réserver
-                        </button>
+                        </a>
+
+                        <div class="result-reservation mt-2" id="result-<?= $representation->getId_representation(); ?>"></div>
+
                     <?php else: ?>
                         <a href="index_.php?page=login.php" class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez vous connecter pour réserver">
                             Se connecter pour réserver

@@ -1,4 +1,4 @@
-    <!-- RepresentationDAO.class.php -->
+<!-- RepresentationDAO.class.php -->
 
 <?php
 
@@ -62,7 +62,7 @@ class RepresentationDAO
         }
     }
 
-    public function add_representation($titre, $type, $date, $image, $salle, $description , $prix)
+    public function add_representation($titre, $type, $date, $image, $salle, $description, $prix)
     {
         $query = "SELECT ajout_representation(:titre, :type, :date, :image, :salle, :description , :prix) as retour";
         try {
@@ -87,7 +87,7 @@ class RepresentationDAO
     }
 
 
-    public function update_representation($id, $titre, $type, $date, $image, $salle, $description , $prix)
+    public function update_representation($id, $titre, $type, $date, $image, $salle, $description, $prix)
     {
         $query = "SELECT update_representation(:id, :titre, :type, :date, :image, :salle, :description , :prix) as retour";
         try {
@@ -137,6 +137,24 @@ class RepresentationDAO
         try {
             $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $this->_bd->commit();
+            return $result;
+        } catch (PDOException $e) {
+            $this->_bd->rollBack();
+            print $e->getMessage();
+            return null;
+        }
+    }
+
+    public function getRepresentationByID($id)
+    {
+        $query = "SELECT * FROM representation WHERE id_representation = :id";
+        try {
+            $this->_bd->beginTransaction();
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':id', $id);
             $stmt->execute();
             $result = $stmt->fetchAll();
             $this->_bd->commit();

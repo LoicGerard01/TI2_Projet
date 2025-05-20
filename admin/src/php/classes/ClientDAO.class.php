@@ -11,6 +11,26 @@ class ClientDAO
         $this->_bd = $cnx;
     }
 
+    public function getClientById($id_client)
+    {
+        $query = "SELECT * FROM client WHERE id_client = :id_client";
+        try {
+            $this->_bd->beginTransaction();
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':id_client', $id_client);
+            $stmt->execute();
+
+            $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->_bd->commit();
+            return $clientData;
+        } catch (PDOException $e) {
+            $this->_bd->rollback();
+            print "Échec de la requête : " . $e->getMessage();
+            return null;
+        }
+    }
+
     public function getClient($email, $password)
     {
         $query = "SELECT * FROM client WHERE email = :email AND password = :password";
@@ -62,6 +82,23 @@ class ClientDAO
             print "Échec de la requête : " . $e->getMessage();
             return null;
         }
+    }
+
+    public function getClient_nom()
+    {
+        return $this->client_nom;
+    }
+    public function getClient_prenom()
+    {
+        return $this->client_prenom;
+    }
+    public function getClient_email()
+    {
+        return $this->client_email;
+    }
+    public function getClient_mobile()
+    {
+        return $this->client_mobile;
     }
 
 }

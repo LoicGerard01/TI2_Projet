@@ -111,7 +111,7 @@ $(document).ready(function () {
     });
 
     // Modification du nom de l'image
-    $('td[data-champ="image"] span[contenteditable="true"]').on('blur', function() {
+    $('td[data-champ="image"] span[contenteditable="true"]').on('blur', function () {
         let champ = 'image';
         let valeur = $(this).text().trim();
         let id_representation = $(this).attr('id');
@@ -173,5 +173,59 @@ $(document).ready(function () {
             }
         });
     });
+
+    // script pour la réservation d'une représentation
+
+    const bouton = document.getElementById("btn-payer");
+    const message = document.getElementById("message-paiement");
+
+    if (bouton) {
+        bouton.addEventListener("click", function () {
+
+            bouton.disabled = true;
+            bouton.innerText = "Paiement en cours...";
+
+            const id_representation = bouton.getAttribute('data-id-representation');
+            const id_salle = bouton.getAttribute('data-id-salle');
+
+            if (!id_representation || !id_salle) {
+                message.innerHTML = '<div class="alert alert-danger">Erreur : données de réservation manquantes.</div>';
+                return;
+            }
+
+            fetch('admin/src/php/ajax/ajax_add_reservation.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: `id_representation=${encodeURIComponent(id_representation)}&id_salle=${encodeURIComponent(id_salle)}`
+            })
+                .then(response => response.text())
+                .then(text => {
+                    console.log("Réponse brute serveur :", text);
+
+                    try {
+                        const data = JSON.parse(text);
+                        console.log("Réponse JSON parsée :", data);
+                    } catch (e) {
+                        console.error(" Erreur de parsing JSON :", e);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur FETCH :', error);
+                });
+            // Simuler un délai pour le paiement
+            setTimeout(() => {
+                bouton.disabled = false;
+                bouton.innerText = "Payer";
+                message.innerHTML = '<div class="alert alert-success">Paiement réussi !</div>';
+            }, 2000);
+
+        });
+    }
+
+
+
+
+
+
 
 });

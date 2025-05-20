@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="corrections affichage client">
-      <change afterPath="$PROJECT_DIR$/content/register.php" afterDir="false" />
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de register">
+      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +100,16 @@
       <recent name="C:\xampp\htdocs\mission\admin\assets\images" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="ajax_add_reservation.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.ajax_add_reservation.php" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -123,7 +140,7 @@
       <workItem from="1745313836425" duration="11534000" />
       <workItem from="1745913203236" duration="4410000" />
       <workItem from="1746004042900" duration="2010000" />
-      <workItem from="1747129310988" duration="969000" />
+      <workItem from="1747129310988" duration="12171000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -269,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746005931236</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="ajout page de register">
+      <option name="closed" value="true" />
+      <created>1747130340414</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1747130340414</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +313,8 @@
     <MESSAGE value="correction var session client" />
     <MESSAGE value="ajout page de profil + réservations actuelles" />
     <MESSAGE value="corrections affichage client" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrections affichage client" />
+    <MESSAGE value="ajout page de register" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout page de register" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

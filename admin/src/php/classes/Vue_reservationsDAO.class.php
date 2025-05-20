@@ -76,6 +76,7 @@ class Vue_reservationsDAO{
     {
         return $this->titre;
     }
+
     public function getDate_representation()
     {
         return $this->date_representation;
