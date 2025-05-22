@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout génération de ticket pdf+code QR">
+      <change afterPath="$PROJECT_DIR$/content/generate_ticket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/check_connection_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/check_connection_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/mes_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/mes_reservations.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/reservation_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +87,7 @@
       <recent name="C:\xampp\htdocs\projet\admin\content" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projet\admin\src\php\utils" />
       <recent name="C:\xampp\htdocs\projet\content" />
       <recent name="C:\xampp\htdocs\projet\content\client" />
       <recent name="C:\xampp\htdocs\mission\content" />
@@ -137,7 +135,7 @@
       <workItem from="1745913203236" duration="4410000" />
       <workItem from="1746004042900" duration="2010000" />
       <workItem from="1747129310988" duration="12283000" />
-      <workItem from="1747907067386" duration="3819000" />
+      <workItem from="1747907067386" duration="8287000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -299,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747749270392</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="reservation fonctionnelle">
+      <option name="closed" value="true" />
+      <created>1747913632097</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1747913632097</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +326,9 @@
     <MESSAGE value="corrections affichage client" />
     <MESSAGE value="ajout page de register" />
     <MESSAGE value="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )" />
+    <MESSAGE value="reservation fonctionnelle" />
+    <MESSAGE value="ajout génération de ticket pdf+code QR" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout génération de ticket pdf+code QR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -329,6 +337,11 @@
           <url>file://$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php</url>
           <line>50</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/content/generate_ticket.php</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

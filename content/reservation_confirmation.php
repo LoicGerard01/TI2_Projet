@@ -50,8 +50,10 @@ if (!$representation) {
         <h2 class="card-title">Titre : <?= htmlspecialchars($representation->getTitre()) ?></h2>
         <p class="card-text">
             Type : <?= htmlspecialchars($representation->getType()) ?><br>
-            Date : <?= htmlspecialchars($representation->getDate_representation()) ?><br>
-            Salle : <?= htmlspecialchars($representation->getSalle()) ?><br>
+            <strong>Date
+                :</strong> <?= htmlspecialchars(date('d/m/Y H:i', strtotime($representation->getDate_representation()))); ?>
+            <br>
+            Salle n°: <?= htmlspecialchars($representation->getSalle()) ?><br>
             Prix : <?= htmlspecialchars($representation->getPrix()) ?>
         </p>
         <button id="btn-payer"

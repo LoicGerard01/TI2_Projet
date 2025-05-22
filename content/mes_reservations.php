@@ -18,6 +18,7 @@ $reservations = $reservationDAO->getReservationsByClient($id_client);
                     <th>Date</th>
                     <th>Salle</th>
                     <th>Numéro de réservation</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,13 @@ $reservations = $reservationDAO->getReservationsByClient($id_client);
                         <td><?= date('d/m/Y H:i', strtotime($res->getDate_representation())); ?></td>
                         <td><?= htmlspecialchars($res->getNum_salle()); ?></td>
                         <td><?= htmlspecialchars($res->getId_reservation()); ?></td>
+                        <td>
+                            <a href="./content/generate_ticket.php?id_reservation=<?= urlencode($res->getId_reservation()); ?>"
+                               class="btn btn-primary btn-sm" target="_blank">
+                                Télécharger le ticket PDF
+                            </a>
+
+                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -36,5 +44,3 @@ $reservations = $reservationDAO->getReservationsByClient($id_client);
         <p class="text-muted">Vous n'avez aucune réservation à venir.</p>
     <?php endif; ?>
 </div>
-</body>
-</html>
