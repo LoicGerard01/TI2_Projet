@@ -200,18 +200,23 @@ $(document).ready(function () {
             })
                 .then(response => response.text())
                 .then(text => {
-                    console.log("Réponse brute serveur :", text);
-
+                    console.log("Réponse brute du serveur :", text);
                     try {
                         const data = JSON.parse(text);
-                        console.log("Réponse JSON parsée :", data);
+                        if (data.success) {
+                            message.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                        } else {
+                            message.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+                        }
                     } catch (e) {
-                        console.error(" Erreur de parsing JSON :", e);
+                        console.error("Erreur parsing JSON :", e);
+                        message.innerHTML = `<div class="alert alert-danger">Erreur serveur : réponse invalide.</div>`;
                     }
                 })
                 .catch(error => {
                     console.error('Erreur FETCH :', error);
                 });
+
             // Simuler un délai pour le paiement
             setTimeout(() => {
                 bouton.disabled = false;

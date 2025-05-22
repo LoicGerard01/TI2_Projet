@@ -1,4 +1,9 @@
 <?php
+// Toujours démarrer la session avant tout
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if(isset($_POST['login_submit'])){
     extract($_POST, EXTR_OVERWRITE);
 
@@ -10,7 +15,6 @@ if(isset($_POST['login_submit'])){
         header('location: admin/index_.php?page=accueil_admin.php');
         exit();
     } else {
-        print "ici";
         $clientDao = new ClientDAO($cnx);
         $client = $clientDao->getClient($login, $password);
 
@@ -25,7 +29,6 @@ if(isset($_POST['login_submit'])){
     }
 }
 ?>
-
 
 <?php if(isset($erreur)) { ?>
     <div class="alert alert-danger"><?php echo $erreur; ?></div>

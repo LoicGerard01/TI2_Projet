@@ -1,12 +1,6 @@
 <?php
 require('./admin/src/php/utils/check_connection_client.php');
 
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['client'])) {
-    header('Location: index_.php?page=login.php');
-    exit;
-}
-
 // Récupération des paramètres
 $id_representation = $_GET['id_representation'] ?? null;
 $id_salle = $_GET['id_salle'] ?? null;

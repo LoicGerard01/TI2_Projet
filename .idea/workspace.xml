@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de register">
-      <change afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_add_reservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_reservationsDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/accueil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/accueil_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/check_connection_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/check_connection_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/reservation_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,8 @@
       <workItem from="1745313836425" duration="11534000" />
       <workItem from="1745913203236" duration="4410000" />
       <workItem from="1746004042900" duration="2010000" />
-      <workItem from="1747129310988" duration="12171000" />
+      <workItem from="1747129310988" duration="12283000" />
+      <workItem from="1747907067386" duration="3819000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -294,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747130340414</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )">
+      <option name="closed" value="true" />
+      <created>1747749270392</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1747749270392</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +319,19 @@
     <MESSAGE value="ajout page de profil + réservations actuelles" />
     <MESSAGE value="corrections affichage client" />
     <MESSAGE value="ajout page de register" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout page de register" />
+    <MESSAGE value="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout page de confirmation d'achat ( ajout de réservation non fonctionnel )" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php</url>
+          <line>50</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
