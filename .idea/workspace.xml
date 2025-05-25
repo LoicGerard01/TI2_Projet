@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout génération de ticket pdf+code QR">
-      <change afterPath="$PROJECT_DIR$/content/generate_ticket.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/mes_reservations.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/mes_reservations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/reservation_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/fonctionsJqueryRepresentation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_search_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_search_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/RepresentationDAO.class.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +136,7 @@
       <workItem from="1745913203236" duration="4410000" />
       <workItem from="1746004042900" duration="2010000" />
       <workItem from="1747129310988" duration="12283000" />
-      <workItem from="1747907067386" duration="8287000" />
+      <workItem from="1747907067386" duration="11437000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -305,7 +306,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747913632097</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="ajout génération de ticket pdf+code QR">
+      <option name="closed" value="true" />
+      <created>1747917997628</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1747917997628</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ajout génération de ticket pdf+code QR">
+      <option name="closed" value="true" />
+      <created>1747918015176</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1747918015176</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

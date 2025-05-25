@@ -1,5 +1,3 @@
-<!-- RepresentationDAO.class.php -->
-
 <?php
 
 class RepresentationDAO
@@ -115,21 +113,21 @@ class RepresentationDAO
 
     public function ajax_get_representation($titre)
     {
-        $query = "SELECT * FROM representation WHERE titre = :titre";
+        $query = "SELECT * FROM representation WHERE LOWER(titre) LIKE LOWER(:titre)";
+
         try {
-            $this->_bd->beginTransaction();
             $stmt = $this->_bd->prepare($query);
-            $stmt->bindValue(':titre', $titre);
+            $stmt->bindValue(':titre', '%' . $titre . '%', PDO::PARAM_STR); // recherche partielle, insensible à la casse
             $stmt->execute();
-            $result = $stmt->fetchAll();
-            $this->_bd->commit();
-            return $stmt->rowCount() > 0 ? $result : null;
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $stmt->rowCount() > 0 ? $result : [];
         } catch (PDOException $e) {
-            $this->_bd->rollBack();
-            print $e->getMessage();
-            return -1;
+            error_log('Erreur SQL : ' . $e->getMessage()); // Log plutôt que print
+            return ['error' => 'Erreur interne'];
         }
     }
+
 
     public function getAllRepresentations()
     {

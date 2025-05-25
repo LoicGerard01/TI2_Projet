@@ -142,37 +142,41 @@ $(document).ready(function () {
     });
 
     // Vérification du nom de représentation
-    $('#zone_rapport, #zone_id_representation').hide();
-    $('#submit_representation').val("Ajouter");
 
-    $('#nom_representation').on('blur', function () {
-        let nom_representation = $(this).val();
-        let param = 'nom_representation=' + encodeURIComponent(nom_representation);
-
-        $.ajax({
-            type: 'get',
-            dataType: 'json',
-            data: param,
-            url: "src/php/ajax/ajax_search_representation.php",
-            success: function (data) {
-                if (data && data.length > 0) {
-                    let rep = data[0];
-                    $('#id_representation').val(rep.id_representation);
-                    $('#type_representation').val(rep.type);
-                    $('#date_representation').val(rep.date_representation);
-                    $('#image_representation').val(rep.image);
-                    $('#description_representation').val(rep.description);
-                    $('#prix_representation').val(rep.prix);
-                    $('#salle_representation').val(rep.salle);
-                    $('#zone_id_representation').show();
-                    $('#submit_representation').val("Mettre à jour");
-                } else {
-                    $('#id_representation').val('');
-                    $('#submit_representation').val("Ajouter");
+    $(document).ready(function () {
+        $('#nom_representation').blur(function () {
+            let titre = $(this).val();
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                data: {nom_representation: titre},
+                url: 'src/php/ajax/ajax_search_representation.php',
+                success: function (data) {
+                    if (data && data.length > 0) {
+                        // remplissage auto des champs
+                        $('#id_representation').val(data[0].id_representation);
+                        $('#type_representation').val(data[0].type);
+                        $('#date_representation').val(data[0].date_representation.split(' ')[0]); // juste la date
+                        $('#image_representation').val(data[0].image);
+                        $('#description_representation').val(data[0].description);
+                        $('#prix_representation').val(data[0].prix.replace('€', ''));
+                        $('#salle_representation').val(data[0].salle);
+                        $('#zone_id_representation').show();
+                        $('#zone_id_value').text(data[0].id_representation);
+                        $('#zone_rapport').hide();
+                        $('#submit_representation').val('Mettre à jour');
+                    } else {
+                        // pas de résultat = formulaire vide
+                        $('#zone_id_representation').hide();
+                        $('#zone_rapport').hide();
+                        $('#submit_representation').val('Nouvelle représentation');
+                    }
                 }
-            }
+            });
         });
+
     });
+
 
     // script pour la réservation d'une représentation
 
@@ -226,11 +230,6 @@ $(document).ready(function () {
 
         });
     }
-
-
-
-
-
 
 
 });
