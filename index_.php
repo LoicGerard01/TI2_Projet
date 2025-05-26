@@ -19,7 +19,13 @@ include('./admin/src/php/utils/all_includes.php');
 
 <body>
 <div id="page" class="container">
-    <header class="img_header"></header>
+    <header class="bg-dark text-white text-center py-5 mb-4" style="background: url('./admin/assets/images/theatre.jpg') no-repeat center center / cover;">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bienvenue sur notre plateforme de réservation</h1>
+            <p class="lead">Spectacles, théâtre, concerts... Réservez facilement en ligne</p>
+        </div>
+    </header>
+
     <section id=" ">
         <nav>
             <?php
@@ -36,10 +42,11 @@ include('./admin/src/php/utils/all_includes.php');
         </nav>
 
     </section>
+
     <section id="contenu">
         <div class="container">
             <?php
-            print "sess : ".$_SESSION['page'];
+            // print "sess : ".$_SESSION['page'];
             if(file_exists('./content/'.$_SESSION['page'])){
                 $path = './content/'.$_SESSION['page'];
                 include($path);
@@ -49,11 +56,14 @@ include('./admin/src/php/utils/all_includes.php');
     </section>
 
 </div>
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">2025</span>
-    </div>
-</footer>
+
+<?php
+    if(file_exists('admin/src/php/utils/footer.php')){
+        include('admin/src/php/utils/footer.php');
+    }
+
+?>
+
 </body>
 </html>
 
