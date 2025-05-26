@@ -6,37 +6,6 @@ $salleDAO = new SalleDAO($cnx);
 $liste_s = $salleDAO->getSalles();
 ?>
 
-<!-- Ajout de style pour le mode sombre et la description -->
-<style>
-    @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #ffffff;
-            color: #ffffff;
-        }
-
-        .table {
-            background-color: #1e1e1e;
-            border: 1px solid;
-        }
-
-        .table th, .table td {
-            border-color: #333;
-        }
-
-        .table thead {
-            background-color: #333;
-            color: #fff;
-        }
-    }
-
-    .description-cell {
-        max-width: 250px; /* fixe la largeur */
-        white-space: normal; /* retour à la ligne normal */
-        overflow-wrap: break-word; /* coupe les mots très longs si besoin */
-        word-wrap: break-word;
-    }
-</style>
-
 <!-- Gestion des représentations -->
 <div class="container my-4">
     <p class="fw-bold fst-italic text-danger" id="ajouter_representation">
