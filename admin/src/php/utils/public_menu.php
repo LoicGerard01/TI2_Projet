@@ -11,7 +11,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Liens principaux -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" href="index_.php?page=accueil.php">Accueil</a>
@@ -21,14 +20,12 @@
                 </li>
             </ul>
 
-            <!-- Barre de recherche -->
             <form class="d-flex" role="search" method="GET" action="index_.php">
                 <input type="hidden" name="page" value="recherche.php">
                 <input class="form-control me-2" type="search" name="query" placeholder="Rechercher un spectacle..." aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Rechercher</button>
             </form>
 
-            <!-- Zone connexion / compte -->
             <div class="d-flex align-items-center">
                 <?php if (isset($_SESSION['client'])) { ?>
                     <a href="index_.php?page=disconnect.php" class="btn btn-outline-light me-2">

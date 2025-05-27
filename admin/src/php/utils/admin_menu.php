@@ -40,7 +40,7 @@
                 </a>
 
                 <form class="d-flex" role="search" method="GET" action="index_.php">
-                    <input type="hidden" name="page" value="index_.php?page=recherche.php">
+                    <input type="hidden" name="page" value="recherche.php">
                     <input class="form-control me-2" type="search" name="query" placeholder="Rechercher un spectacle..." aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Rechercher</button>
                 </form>

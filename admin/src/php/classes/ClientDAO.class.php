@@ -84,6 +84,15 @@ class ClientDAO
         }
     }
 
+    public function emailExists($email) {
+        $sql = "SELECT 1 FROM client WHERE email = :email";
+        $stmt = $this->_bd->prepare($sql);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        return $stmt->fetchColumn() !== false;
+    }
+
+
     public function getClient_nom()
     {
         return $this->client_nom;

@@ -3,16 +3,22 @@ if (isset($_POST['register_submit'])) {
     extract($_POST, EXTR_OVERWRITE);
 
     $clientDao = new ClientDAO($cnx);
-    $client = $clientDao->addClient($nom_client, $prenom_client, $email, $password, $mobile);
 
-    if ($client) {
-        $_SESSION['client'] = $client; // contient toutes les infos du client
-        header('location: index_.php?page=accueil_client.php');
-        exit();
+    if ($clientDao->emailExists($email)) {
+        $erreur = "Cette adresse e-mail est déjà utilisée. Veuillez en choisir une autre.";
     } else {
-        $erreur = "Erreur lors de l'inscription";
+        $client = $clientDao->addClient($nom_client, $prenom_client, $email, $password, $mobile);
+
+        if ($client) {
+            $_SESSION['client'] = $client;
+            header('location: index_.php?page=accueil_client.php');
+            exit();
+        } else {
+            $erreur = "Erreur lors de l'inscription. Veuillez réessayer.";
+        }
     }
 }
+
 ?>
 
 <?php if (isset($erreur)) { ?>
@@ -31,7 +37,7 @@ if (isset($_POST['register_submit'])) {
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Adresse e-mail</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email" value="<?= isset($email) ? htmlspecialchars($email) : '' ?>" required>
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
