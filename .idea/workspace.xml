@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="maj css">
-      <change afterPath="$PROJECT_DIR$/admin/content/gestion_client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/content/gestion_reservation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/content/gestion_salle.php" afterDir="false" />
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="corrections daos + affichage des autres tables dans l'admin">
+      <change afterPath="$PROJECT_DIR$/admin/src/php/utils/sitemap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Client.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Client.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Reservation.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Reservation.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ReservationDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Salle.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Salle.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representations.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_get_salle.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_get_salle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/ajax/ajax_update_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/ajax/ajax_update_representation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-PHP": "PHP",
-    "Notification.DoNotAsk-PHP": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/projet/admin/content",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-PHP&quot;: &quot;PHP&quot;,
+    &quot;Notification.DoNotAsk-PHP&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/projet/admin/content&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\projet\admin\content" />
@@ -145,7 +137,8 @@
       <workItem from="1747129310988" duration="12283000" />
       <workItem from="1747907067386" duration="15954000" />
       <workItem from="1748271031193" duration="11939000" />
-      <workItem from="1748354516968" duration="4426000" />
+      <workItem from="1748354516968" duration="4543000" />
+      <workItem from="1748359138717" duration="3472000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -411,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748348061775</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="corrections daos + affichage des autres tables dans l'admin">
+      <option name="closed" value="true" />
+      <created>1748359061036</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1748359061036</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +442,8 @@
     <MESSAGE value="correction liens fiche representation" />
     <MESSAGE value="correction erreur disconnect" />
     <MESSAGE value="maj css" />
-    <option name="LAST_COMMIT_MESSAGE" value="maj css" />
+    <MESSAGE value="corrections daos + affichage des autres tables dans l'admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrections daos + affichage des autres tables dans l'admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

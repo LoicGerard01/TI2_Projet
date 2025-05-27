@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require '../db/db_pg_connect.php';
 require '../classes/Connection.class.php';
-require '../classes/SalleDAO.class.php'; // Vérifie que cette classe existe et est incluse correctement
+require '../classes/SalleDAO.class.php';
 
 $cnx = Connection::getInstance($dsn, $user, $password);
 

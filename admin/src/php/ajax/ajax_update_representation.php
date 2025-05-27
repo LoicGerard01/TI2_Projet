@@ -1,5 +1,3 @@
-<!-- ajax_update_representation.php -->
-
 <?php
 header('Content-Type: application/json');
 
