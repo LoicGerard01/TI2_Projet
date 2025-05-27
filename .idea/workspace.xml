@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout sitemap.xml">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="maj css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/profil_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/profil_client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/reservation_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/reservation_confirmation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/content/disconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/disconnect.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +136,7 @@
       <workItem from="1747907067386" duration="15954000" />
       <workItem from="1748271031193" duration="11939000" />
       <workItem from="1748354516968" duration="4543000" />
-      <workItem from="1748359138717" duration="3789000" />
+      <workItem from="1748359138717" duration="3976000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -428,7 +426,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748362721349</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="maj css">
+      <option name="closed" value="true" />
+      <created>1748363053019</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1748363053019</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -457,10 +463,10 @@
     <MESSAGE value="correction menu" />
     <MESSAGE value="correction liens fiche representation" />
     <MESSAGE value="correction erreur disconnect" />
-    <MESSAGE value="maj css" />
     <MESSAGE value="corrections daos + affichage des autres tables dans l'admin" />
     <MESSAGE value="ajout sitemap.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout sitemap.xml" />
+    <MESSAGE value="maj css" />
+    <option name="LAST_COMMIT_MESSAGE" value="maj css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
