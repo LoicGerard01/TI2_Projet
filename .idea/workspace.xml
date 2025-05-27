@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction liens fiche representation">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction erreur disconnect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index_.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/disconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/disconnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/fiche_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/fiche_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +137,7 @@
       <workItem from="1746004042900" duration="2010000" />
       <workItem from="1747129310988" duration="12283000" />
       <workItem from="1747907067386" duration="15954000" />
-      <workItem from="1748271031193" duration="10327000" />
+      <workItem from="1748271031193" duration="11851000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -385,7 +387,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748344397032</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="correction erreur disconnect">
+      <option name="closed" value="true" />
+      <created>1748346467993</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1748346467993</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +424,8 @@
     <MESSAGE value="ajout fonction de recherche" />
     <MESSAGE value="correction menu" />
     <MESSAGE value="correction liens fiche representation" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction liens fiche representation" />
+    <MESSAGE value="correction erreur disconnect" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction erreur disconnect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

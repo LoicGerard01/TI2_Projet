@@ -6,6 +6,8 @@ $title = "Nos programmes";
 $salleDAO = new SalleDAO($cnx);
 ?>
 
+<h3> - Tous nos programmes -</h3>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php foreach ($liste as $representation): ?>
         <div class="col">

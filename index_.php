@@ -15,13 +15,14 @@ include('./admin/src/php/utils/all_includes.php');
     <script src="./admin/assets/js/fonctionsJqueryRepresentation.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="admin/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-theatre text-light">
 <div id="page" class="container">
-    <header class="bg-dark text-white text-center py-5 mb-4" style="background: url('./admin/assets/images/theatre.jpg') no-repeat center center / cover;">
+    <header class="bg-dark text-white text-center py-5 mb-4 " style="background: url('./admin/assets/images/theatre.jpg') no-repeat center center / cover;">
         <div class="container">
-            <h1 class="display-4 fw-bold">Bienvenue sur notre plateforme de réservation</h1>
+            <h1 class="display-5 fw-bold">Bienvenue sur notre plateforme de réservation</h1>
             <p class="lead">Spectacles, théâtre, concerts... Réservez facilement en ligne</p>
         </div>
     </header>

@@ -1,23 +1,61 @@
-#menu{
+body {
+    font-family: 'Playfair Display', serif;
+
+}
+
+#menu {
     height: 10em;
     width: 10em;
+
     background-color: aqua;
 }
 
-.txtGras{
+h3 {
+    font-size: 2em;
+    font-style: italic;
+    color: black;
+}
+h2{
+    font-size: 1.5em;
+    font-style: italic;
+    color: black;
+}
+.fiche_representation{
+    color: black;
+}
+.bg-theatre {
+    background-color: #4B0000; /* bordeaux profond */
+
+}
+.mb-3{
+    color: black;
+}
+.bg-dark{
+    border : 2px solid black;
+}
+.container my-5{
+    color: black;
+}
+
+
+.txtGras {
     font-weight: bold;
     font-size: 130%;
 }
+
 #menu ul {
     list-style-type: none;
     padding: 0;
+
 }
+
 #contenu {
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    font-size: 1.4em;
 }
 
 body {
@@ -32,6 +70,7 @@ a.nav-link:hover {
 .table th, .table td {
     vertical-align: middle;
 }
+
 .table th {
     background-color: #f1f1f1;
     font-weight: bold;
@@ -42,6 +81,7 @@ footer {
     padding-bottom: 1rem;
     margin-top: 2rem;
 }
+
 .navbar-nav .nav-link,
 .btn {
     transition: all 0.3s ease;

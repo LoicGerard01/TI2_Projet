@@ -11,7 +11,7 @@ if (!$rep) {
 
 $salleDAO = new SalleDAO($cnx);
 ?>
-
+<div class="fiche_representation">
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4">
@@ -39,4 +39,5 @@ $salleDAO = new SalleDAO($cnx);
             <?php endif; ?>
         </div>
     </div>
+</div>
 </div>
