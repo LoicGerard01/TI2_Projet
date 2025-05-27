@@ -22,9 +22,10 @@
             </ul>
 
             <!-- Barre de recherche -->
-            <form class="d-flex me-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">OK</button>
+            <form class="d-flex" role="search" method="GET" action="index_.php">
+                <input type="hidden" name="page" value="recherche.php">
+                <input class="form-control me-2" type="search" name="query" placeholder="Rechercher un spectacle..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Rechercher</button>
             </form>
 
             <!-- Zone connexion / compte -->

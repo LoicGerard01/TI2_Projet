@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="maj backup db">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="maj css">
+      <change afterPath="$PROJECT_DIR$/content/fiche_representation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/recherche.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/gestion_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/gestion_representation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/content/nouvelle_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/Vue_representationsDAO.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index_.php" beforeDir="false" afterPath="$PROJECT_DIR$/index_.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,8 +91,8 @@
       <recent name="C:\xampp\htdocs\projet\admin\content" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\projet\admin\src\php\utils" />
       <recent name="C:\xampp\htdocs\projet\content" />
+      <recent name="C:\xampp\htdocs\projet\admin\src\php\utils" />
       <recent name="C:\xampp\htdocs\projet\content\client" />
       <recent name="C:\xampp\htdocs\mission\content" />
       <recent name="C:\xampp\htdocs\mission\admin\assets\images" />
@@ -141,7 +140,7 @@
       <workItem from="1746004042900" duration="2010000" />
       <workItem from="1747129310988" duration="12283000" />
       <workItem from="1747907067386" duration="15954000" />
-      <workItem from="1748271031193" duration="3333000" />
+      <workItem from="1748271031193" duration="7132000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -351,7 +350,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748255603356</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="maj css">
+      <option name="closed" value="true" />
+      <created>1748275600195</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748275600195</updated>
+    </task>
+    <task id="LOCAL-00028" summary="maj css">
+      <option name="closed" value="true" />
+      <created>1748275609365</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748275609365</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,9 +390,9 @@
     <MESSAGE value="reservation fonctionnelle" />
     <MESSAGE value="ajout génération de ticket pdf+code QR" />
     <MESSAGE value="ajout fonction recherche pour l'ajout de representation" />
-    <MESSAGE value="maj css" />
     <MESSAGE value="maj backup db" />
-    <option name="LAST_COMMIT_MESSAGE" value="maj backup db" />
+    <MESSAGE value="maj css" />
+    <option name="LAST_COMMIT_MESSAGE" value="maj css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

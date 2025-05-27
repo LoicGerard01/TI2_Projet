@@ -48,6 +48,28 @@ class Vue_representationsDAO{
         return new Vue_representations($data);
     }
 
+    // pour la recherche dans la navbar
+    public function searchByTitle($query) {
+        $sql = "SELECT * FROM vue_representations_a_venir WHERE titre LIKE :query ORDER BY date_representation";
+        $stmt = $this->_bd->prepare($sql);
+        $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
+        try {
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = [];
+
+            foreach ($rows as $row) {
+                $result[] = new Vue_representations($row);
+            }
+
+
+            return $result;
+        } catch (PDOException $e) {
+            error_log('Erreur SQL : ' . $e->getMessage());
+            return [];
+        }
+    }
+
 
     public function getId_representation(){
         return $this->_id_representation;

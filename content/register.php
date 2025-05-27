@@ -1,23 +1,3 @@
-<!--     public function addClient($nom_client, $prenom_client, $email, $password, $mobile){
-        $query = "INSERT INTO client(nom_client, prenom_client, email, password, mobile) VALUES (:nom_client, :prenom_client, :email, :password, :mobile)";
-        try {
-            $this->_bd->beginTransaction();
-            $resultset = $this->_bd->prepare($query);
-            $resultset->bindValue(':nom_client', $nom_client);
-            $resultset->bindValue(':prenom_client', $prenom_client);
-            $resultset->bindValue(':email', $email);
-            $resultset->bindValue(':password', $password);
-            $resultset->bindValue(':mobile', $mobile);
-            $resultset->execute();
-
-            $this->_bd->commit();
-            return 1;
-        } catch (PDOException $e) {
-            $this->_bd->rollback();
-            print "Échec de la requête : " . $e->getMessage();
-            return null;
-        }
-    } -->
 <?php
 if (isset($_POST['register_submit'])) {
     extract($_POST, EXTR_OVERWRITE);
