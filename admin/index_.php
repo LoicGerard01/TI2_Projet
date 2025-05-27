@@ -39,11 +39,12 @@ include('./src/php/utils/all_includes.php');
     </section>
 
 </div>
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">2025</span>
-    </div>
-</footer>
+<?php
+if(file_exists('../admin/src/php/utils/footer.php')){
+    include('../admin/src/php/utils/footer.php');
+}
+
+?>
 </body>
 </html>
 
