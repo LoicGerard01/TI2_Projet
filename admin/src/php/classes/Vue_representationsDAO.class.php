@@ -1,5 +1,3 @@
-<!-- Vue_representationsDAO.class.php -->
-
 <?php
 
 class Vue_representationsDAO{

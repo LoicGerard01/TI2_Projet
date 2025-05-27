@@ -28,4 +28,17 @@ class Salle
         $this->_attributs[$champ] = $valeur;
     }
 
+    public function getId_salle()
+    {
+        return $this->__get('id_salle');
+    }
+    public function getNum_salle()
+    {
+        return $this->__get('num_salle');
+    }
+    public function getCapacite()
+    {
+        return $this->__get('nb_sieges');
+    }
+
 }

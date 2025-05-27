@@ -92,6 +92,16 @@ class ClientDAO
         return $stmt->fetchColumn() !== false;
     }
 
+    public function getAllClients()
+    {
+        $sql = "SELECT * FROM client";
+        $result = $this->_bd->query($sql);
+        while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
+            $this->_array[] = new Client($data);
+        }
+        return $this->_array;
+    }
+
 
     public function getClient_nom()
     {

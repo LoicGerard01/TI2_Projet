@@ -28,4 +28,24 @@ class Client
         $this->_attributs[$champ] = $valeur;
     }
 
+    public function getId_client()
+    {
+        return $this->_attributs['id_client'];
+    }
+    public function getClient_nom()
+    {
+        return $this->_attributs['nom_client'];
+    }
+    public function getClient_prenom()
+    {
+        return $this->_attributs['prenom_client'];
+    }
+    public function getClient_email()
+    {
+        return $this->_attributs['email'];
+    }
+    public function getClient_mobile()
+    {
+        return $this->_attributs['mobile'];
+    }
 }

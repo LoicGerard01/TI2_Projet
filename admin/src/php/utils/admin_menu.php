@@ -29,6 +29,12 @@
                                 ➕ Nouvelle représentation</a></li>
                         <li><a class="dropdown-item" href="index_.php?page=gestion_representation.php">
                                 🗂 Gestion des représentations</a></li>
+                        <li><a class="dropdown-item" href="index_.php?page=gestion_reservation.php">
+                                🗂 Gestion des reservations</a></li>
+                        <li><a class="dropdown-item" href="index_.php?page=gestion_salle.php">
+                                🗂 Gestion des salles</a></li>
+                        <li><a class="dropdown-item" href="index_.php?page=gestion_client.php">
+                                🗂 Gestion des clients</a></li>
                         <li><hr class="dropdown-divider"></li>
                     </ul>
                 </li>
