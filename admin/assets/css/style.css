@@ -9,6 +9,13 @@ body {
 
     background-color: aqua;
 }
+.ConfirmationReservation {
+    font-size: 3em;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 1rem;
+}
 
 h3 {
     font-size: 2em;

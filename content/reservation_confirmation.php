@@ -24,15 +24,7 @@ if (!$representation) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Confirmation de Réservation</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-</head>
-<body class="container mt-5">
-<h1 class="mb-4">Confirmation de réservation</h1>
+<h1 class="ConfirmationReservation">Confirmation de réservation</h1>
 <h2 class="mb-4">Informations Personnelles</h2>
 <div class="card">
     <div class="card-body">
@@ -66,6 +58,3 @@ if (!$representation) {
 </div>
 
 <div class="mt-3" id="message-paiement"></div>
-
-</body>
-</html>

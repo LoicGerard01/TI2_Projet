@@ -14,6 +14,6 @@ $clientDAO = new ClientDAO($cnx);
         <li class="list-group-item"><strong>Nom :</strong> <?= htmlspecialchars($client['nom_client']); ?></li>
         <li class="list-group-item"><strong>Prénom :</strong> <?= htmlspecialchars($client['prenom_client']); ?></li>
         <li class="list-group-item"><strong>Email :</strong> <?= htmlspecialchars($client['email']); ?></li>
-        <li class="list-group-item"><strong>Mobile :</strong> <?= htmlspecialchars($client['mobile']); ?></li>
+        <li class="list-group-item"><strong>Numéro de mobile :</strong> <?= htmlspecialchars($client['mobile']); ?></li>
     </ul>
 </div>
