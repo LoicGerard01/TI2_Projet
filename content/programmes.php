@@ -62,11 +62,9 @@ $salleDAO = new SalleDAO($cnx);
                              id="result-<?= $representation->getId_representation(); ?>"></div>
 
                     <?php else: ?>
-
-                        <button class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Vous devez vous connecter pour réserver">
+                        <a href="index_.php?page=login.php" class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez vous connecter pour réserver">
                             Se connecter pour réserver
-                        </button>
+                        </a>
                     <?php endif; ?>
                 </div>
             </div>

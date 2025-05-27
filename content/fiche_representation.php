@@ -21,9 +21,22 @@ $salleDAO = new SalleDAO($cnx);
             <h2><?= htmlspecialchars($rep->getTitre()); ?></h2>
             <p class="text-muted"><?= htmlspecialchars($rep->getType()); ?> | <?= htmlspecialchars($rep->getDate_representation()); ?></p>
             <p><strong>Description :</strong><br><?= nl2br(htmlspecialchars($rep->getDescription())); ?></p>
-            <p><strong>Prix :</strong> <?= htmlspecialchars($rep->getPrix()); ?> €</p>
+            <p><strong>Prix :</strong> <?= htmlspecialchars($rep->getPrix()); ?> </p>
 
             <a href="index_.php?page=programmes.php" class="btn btn-secondary mt-3">← Retour aux programmes</a>
+            <?php if (isset($_SESSION['client']) && !empty($_SESSION['client'])): ?>
+                <a href="index_.php?page=reservation_confirmation.php&id_representation=<?= $rep->getId_representation(); ?>&id_salle=<?= $rep->getSalle(); ?>" class="btn btn-success mt-3">
+                    Réserver
+                </a>
+
+                <div class="result-reservation mt-2"
+                     id="result-<?= $rep->getId_representation(); ?>"></div>
+
+            <?php else: ?>
+                <a href="index_.php?page=login.php" class="btn btn-warning mt-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Vous devez vous connecter pour réserver">
+                    Se connecter pour réserver
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="ajout fonction de recherche">
+    <list default="true" id="264cddca-ed86-41c9-8355-0088c2bf9e32" name="Changes" comment="correction menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/classes/ClientDAO.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/admin_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/client_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/php/utils/public_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/disconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/disconnect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/fiche_representation.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/fiche_representation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/programmes.php" beforeDir="false" afterPath="$PROJECT_DIR$/content/programmes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +135,7 @@
       <workItem from="1746004042900" duration="2010000" />
       <workItem from="1747129310988" duration="12283000" />
       <workItem from="1747907067386" duration="15954000" />
-      <workItem from="1748271031193" duration="7952000" />
+      <workItem from="1748271031193" duration="8537000" />
     </task>
     <task id="LOCAL-00001" summary="base projet ( site de réservations pour différentes représentations ( concert , théatre , etc)">
       <option name="closed" value="true" />
@@ -373,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748343027585</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="correction menu">
+      <option name="closed" value="true" />
+      <created>1748343831693</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1748343831693</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +404,8 @@
     <MESSAGE value="maj backup db" />
     <MESSAGE value="maj css" />
     <MESSAGE value="ajout fonction de recherche" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout fonction de recherche" />
+    <MESSAGE value="correction menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
